@@ -1,4 +1,0 @@
- KO input internal dependency (always redo) <- Initial Check/Analyze Project
- OK input internal dependency (structural) <- Initial Check/Target Configuration/Analyze Target Configuration Results
- KO input internal dependency (always redo) <- Initial Check/Analyze Project
- KO input design/fs_macros.edf out of date (non equal checksum) <- Design/Build Fs Macro/Build Fs Macro Library

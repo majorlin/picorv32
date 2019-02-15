@@ -1,7 +1,0 @@
-UCSetZcuiWorkDir {/proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/zebu.work}
-UCSetVcsDumpDir {/proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/zebu.work/vcs_splitter}
-UCSetUTFDumpDir {/proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/zebu.work/utf_generatefiles}
-UCSetUTFFile {/proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/../src/env/pico_device_wrapper.utf}
-UCSetZfeIsRemoved -true
-UCSetArchitecture -server zs3 -fpga vtx7
-UCSetWlsFlow -default

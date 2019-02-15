@@ -1,3 +1,0 @@
-source /proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/zebu.work/utf_generatefiles/vcs_zTopBuild_commands_with_resolved_names.tcl
-disable ztime_uses_rtl_names
-set_sva_report_only_failure true
