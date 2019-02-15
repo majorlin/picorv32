@@ -27,7 +27,6 @@
 
 module picoram (
 	input clk,
-	input resetn,
 
 	input  irq_5,
 	input  irq_6,
@@ -52,6 +51,13 @@ module picoram (
 	reg [31:0] irq;
 	wire irq_stall = 0;
 	wire irq_uart = 0;
+
+	reg [5:0] reset_cnt = 0;
+	wire resetn = &reset_cnt;
+
+	always @(posedge clk) begin
+		reset_cnt <= reset_cnt + !resetn;
+	end
 
 	always @* begin
 		irq = 0;

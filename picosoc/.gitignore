@@ -24,3 +24,7 @@
 /icebreaker_fw.bin
 /testbench.vcd
 /cmos.log
+picoram_fw.hex
+picoram_fw.map
+picoram_tb.vvp
+picoram_fw.elf
