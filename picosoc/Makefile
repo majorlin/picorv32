@@ -1,4 +1,22 @@
 
+# ---- RAM SIM ----
+picoram: picoram_tb.vvp picoram_fw.hex
+	vvp -N $< +firmware=picoram_fw.hex
+
+picoram_tb.vvp: picoram_tb.v picoram.v  simpleuart.v ../picorv32.v 
+#picoram_tb.vvp: picoram_tb.v picoram.v  simpleuart.v picosoc.v ../picorv32.v spimemio.v spiflash.v fpga_pin_model.v
+	iverilog -s testbench -o $@ $^ 
+
+picoram_fw.elf: sections.lds start.s picoram_fw.c
+	riscv32-unknown-elf-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_ram.lds,--strip-debug -ffreestanding -nostdlib -o picoram_fw.elf start.s picoram_fw.c
+
+picoram_fw.hex: picoram_fw.elf
+	riscv32-unknown-elf-objcopy -O verilog picoram_fw.elf picoram_fw.hex
+	riscv32-unknown-elf-objdump -h -D -t picoram_fw.elf > picoram_fw.map
+
+picoram_fw.bin: picoram_fw.elf
+	riscv32-unknown-elf-objcopy -O binary picoram_fw.elf picoram_fw.bin
+
 # ---- iCE40 HX8K Breakout Board ----
 
 hx8ksim: hx8kdemo_tb.vvp hx8kdemo_fw.hex
@@ -10,8 +28,9 @@ hx8ksynsim: hx8kdemo_syn_tb.vvp hx8kdemo_fw.hex
 hx8kdemo.blif: hx8kdemo.v spimemio.v simpleuart.v picosoc.v ../picorv32.v
 	yosys -ql hx8kdemo.log -p 'synth_ice40 -top hx8kdemo -blif hx8kdemo.blif' $^
 
-hx8kdemo_tb.vvp: hx8kdemo_tb.v hx8kdemo.v spimemio.v simpleuart.v picosoc.v ../picorv32.v spiflash.v
-	iverilog -s testbench -o $@ $^ `yosys-config --datdir/ice40/cells_sim.v`
+hx8kdemo_tb.vvp: hx8kdemo_tb.v hx8kdemo.v spimemio.v simpleuart.v picosoc.v ../picorv32.v spiflash.v fpga_pin_model.v
+	#iverilog -s testbench -o $@ $^ `yosys-config --datdir/ice40/cells_sim.v`
+	iverilog -s testbench -o $@ $^ 
 
 hx8kdemo_syn_tb.vvp: hx8kdemo_tb.v hx8kdemo_syn.v spiflash.v
 	iverilog -s testbench -o $@ $^ `yosys-config --datdir/ice40/cells_sim.v`
@@ -35,6 +54,7 @@ hx8kprog_fw: hx8kdemo_fw.bin
 
 hx8kdemo_fw.elf: sections.lds start.s firmware.c
 	riscv32-unknown-elf-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections.lds,--strip-debug -ffreestanding -nostdlib -o hx8kdemo_fw.elf start.s firmware.c
+	riscv32-unknown-elf-objdump -h -D -t hx8kdemo_fw.elf > hx8kdemo_fw.map
 
 hx8kdemo_fw.hex: hx8kdemo_fw.elf
 	riscv32-unknown-elf-objcopy -O verilog hx8kdemo_fw.elf hx8kdemo_fw.hex
@@ -102,10 +122,11 @@ cmos.log: spimemio.v simpleuart.v picosoc.v ../picorv32.v
 
 clean:
 	rm -f testbench.vvp testbench.vcd spiflash_tb.vvp spiflash_tb.vcd
-	rm -f hx8kdemo_fw.elf hx8kdemo_fw.hex hx8kdemo_fw.bin cmos.log
+	rm -f hx8kdemo_fw.elf hx8kdemo_fw.hex hx8kdemo_fw.map hx8kdemo_fw.bin cmos.log
+	rm -f picoram_fw.elf picoram_fw.hex picoram_fw.map picoram_fw.bin cmos.log
 	rm -f icebreaker_fw.elf icebreaker_fw.hex icebreaker_fw.bin
 	rm -f hx8kdemo.blif hx8kdemo.log hx8kdemo.asc hx8kdemo.rpt hx8kdemo.bin
-	rm -f hx8kdemo_syn.v hx8kdemo_syn_tb.vvp hx8kdemo_tb.vvp
+	rm -f hx8kdemo_syn.v hx8kdemo_syn_tb.vvp hx8kdemo_tb.vvp picoram_tb.vvp
 	rm -f icebreaker.json icebreaker.log icebreaker.asc icebreaker.rpt icebreaker.bin
 	rm -f icebreaker_syn.v icebreaker_syn_tb.vvp icebreaker_tb.vvp
 

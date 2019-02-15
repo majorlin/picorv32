@@ -53,7 +53,7 @@ module hx8kdemo (
 	wire flash_io1_oe, flash_io1_do, flash_io1_di;
 	wire flash_io2_oe, flash_io2_do, flash_io2_di;
 	wire flash_io3_oe, flash_io3_do, flash_io3_di;
-
+/*
 	SB_IO #(
 		.PIN_TYPE(6'b 1010_01),
 		.PULLUP(1'b 0)
@@ -63,6 +63,11 @@ module hx8kdemo (
 		.D_OUT_0({flash_io3_do, flash_io2_do, flash_io1_do, flash_io0_do}),
 		.D_IN_0({flash_io3_di, flash_io2_di, flash_io1_di, flash_io0_di})
 	);
+*/
+    fpga_pin_model io3(.doe(flash_io3_oe), .do(flash_io3_do), .ind(flash_io3_di), .pin(flash_io3));
+    fpga_pin_model io2(.doe(flash_io2_oe), .do(flash_io2_do), .ind(flash_io2_di), .pin(flash_io2));
+    fpga_pin_model io1(.doe(flash_io1_oe), .do(flash_io1_do), .ind(flash_io1_di), .pin(flash_io1));
+    fpga_pin_model io0(.doe(flash_io0_oe), .do(flash_io0_do), .ind(flash_io0_di), .pin(flash_io0));
 
 	wire        iomem_valid;
 	reg         iomem_ready;
