@@ -4,7 +4,7 @@ VcsCommand { vcs -full64  \
              +libext+.v +define+$IFLESS \
              -y $ZEBU_IP_ROOT/uc_xtor \
              ../src/pico_dut/zebu_tb.v \
-             ../../picosoc/picosoc.v \
+             ../../picosoc/picoram.v \
              ../../picorv32.v \
              ../../picosoc/simpleuart.v  }
 ArchitectureFile "$env(FILE_CONF)"
