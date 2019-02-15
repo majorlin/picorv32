@@ -212,7 +212,6 @@ module picosoc_mem #(
 	output reg [31:0] rdata
 );
 	reg [7:0] mem [0:WORDS*4-1];
-	initial $readmemh("./picoram_fw.hex", mem);
     wire [31:0] conv_addr;
     assign conv_addr = {addr, 2'b00};
 

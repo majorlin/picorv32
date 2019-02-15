@@ -25,25 +25,18 @@ module testbench;
     wire TXD;
     wire nrst;
 
-    wire flash_csb;
-    wire flash_clk;
-    wire flash_io0;
-    wire flash_io1;
-    wire flash_io2;
-    wire flash_io3;
 
-    hx8kdemo uut (
+    picoram uut (
         .clk      (clk      ),
         .leds     (leds     ),
         .ser_rx   (RXD),
         .ser_tx   (TXD),
-        .flash_csb(flash_csb),
-        .flash_clk(flash_clk),
-        .flash_io0(flash_io0),
-        .flash_io1(flash_io1),
-        .flash_io2(flash_io2),
-        .flash_io3(flash_io3)
+        .irq_5      (1'b0),
+        .irq_6      (1'b0),
+        .irq_7      (1'b0)
     );
+
+	initial $readmemh("/proj/mcu_zebu/users/b51677/picorv32/pico_zebu/src/picoram_fw.hex", testbench.uut.memory.mem);
 
     `ifdef ZEBU_NO_RTB
         defparam uart_driver_0.clock_ctrl_0="clockPort0";

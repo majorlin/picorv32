@@ -21,12 +21,9 @@ ZCUI_set ZebuWorkingDirectory $env(ZEBUWORK)
 ## Design sources
 #==========================================================================
 ZCUI_add -rtlGroup {dut} "$env(SYNTH_TOOLS)" {dut} {}
-ZCUI_add -rtlSource {dut} {../src/picosoc/fpga_pin_model.v} {} -language verilog
-ZCUI_add -rtlSource {dut} {../src/picosoc/hx8kdemo.v} {} -language verilog
-ZCUI_add -rtlSource {dut} {../src/picosoc/picosoc.v} {} -language verilog
-ZCUI_add -rtlSource {dut} {../src/picosoc/picorv32.v} {} -language verilog
+ZCUI_add -rtlSource {dut} {../../picosoc/picoram.v} {} -language verilog
+ZCUI_add -rtlSource {dut} {../../picorv32.v} {} -language verilog
 ZCUI_add -rtlSource {dut} {../src/picosoc/simpleuart.v} {} -language verilog
-ZCUI_add -rtlSource {dut} {../src/picosoc/spimemio.v} {} -language verilog
 ZCUI_set TopLevel {dut}
 #ZCUI_add -edif {../src/dut/dut.edf}
 
@@ -35,7 +32,7 @@ ZCUI_set TopLevel {dut}
 ZCUI_set ArchitectureFile $env(FILE_CONF)
 #--------------------------------------------------------------------------
 ## Default Back-End : Environnement
-ZCUI_set DVEFileName {../src/env/uart_driver.dve}
+ZCUI_set DVEFileName {../src/env/pico_driver.dve}
 ZCUI_set GeneratorType CPP
 ZCUI_set UseZebuIpRoot t
 #--------------------------------------------------------------------------

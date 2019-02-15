@@ -3,16 +3,10 @@ VcsCommand { vcs -full64  \
              -hw_top=testbench\
              +libext+.v +define+$IFLESS \
              -y $ZEBU_IP_ROOT/uc_xtor \
-             -y $ZEBU_IP_ROOT/ZSPIFLASH/W25Q/128Mb/component \
-             $ZEBU_IP_ROOT/HW_IP/ZSPIFLASH/W25Q/128Mb/edif/zspiflash_W25Q_128Mb.edf \
-             ../src/picosoc/zebu_tb.v \
-             ../src/picosoc/fpga_pin_model.v \
-             ../src/picosoc/hx8kdemo.v \
-             ../src/picosoc/picosoc.v \
-             ../src/picosoc/picorv32.v \
-             ../src/picosoc/simpleuart.v \
-             ../src/picosoc/spiflash.v \
-             ../src/picosoc/spimemio.v }
+             ../src/pico_dut/zebu_tb.v \
+             ../../picosoc/picosoc.v \
+             ../../picorv32.v \
+             ../../picosoc/simpleuart.v  }
 ArchitectureFile "$env(FILE_CONF)"
 GridCmd -submit $env(REMOTECMD) -delete {}
 xtors -use_zebu_ip_root t
