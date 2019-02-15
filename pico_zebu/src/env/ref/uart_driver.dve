@@ -1,0 +1,26 @@
+uart_driver uart_driver_0(
+  .CTS(RTS_0),
+  .RTS(CTS_0),
+  .TxD(RxD_0),
+  .RxD(TxD_0),
+  .save(save_0)
+);
+defparam uart_driver_0.clock_ctrl_0 = clk;
+
+uart_driver uart_driver_1(
+  .CTS(RTS_1),
+  .RTS(CTS_1),
+  .TxD(RxD_1),
+  .RxD(TxD_1),
+  .save(save_1)
+);
+
+defparam uart_driver_1.clock_ctrl_0= clk;
+
+zceiClockPort clockPort(
+	.cclock(clk),
+	.cresetn(rstn)
+);
+
+reg save_0;
+reg save_1;

@@ -1,0 +1,30 @@
+                         Chronologic VCS (TM)
+    Version M-2017.03-SP2-10-Z_Full64 -- Thu Feb 14 20:31:59 2019
+               Copyright (c) 1991-2017 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+
+Note-[BC_USE] Backward Compatibility features in use.
+  Using BC configuration 
+  /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/etc/vcs/synopsys_bc.setup     
+
+UNIZFE: Got HW top: testbench
+UNIZFE: Turning ON UNIZFE mode
+Parsing design file '/proj/mcu_zebu/ZEBU_IP_2017.12/HW_IP/ZSPIFLASH/W25Q/128Mb/edif/zspiflash_W25Q_128Mb.edf'
+
+Error-[SE] Syntax error
+  Following verilog source has syntax error :
+  "/proj/mcu_zebu/ZEBU_IP_2017.12/HW_IP/ZSPIFLASH/W25Q/128Mb/edif/zspiflash_W25Q_128Mb.edf",
+  1: token is ','
+  ZEBU_CRYPTED(LIC0:zip_SPIFlash_25Q,VER0:2.0,LIC1:zip_ZS4XtorMemBaseLib,VER1:2.0,DATE:Tue
+  Jan 16 01_28_48 
+  2018,VERSION:1.0,HSIGN:815536b5f5846d8412cc44161838392f237dc060bec5eb105ffc35696eab78b464098fa14cf502cb9a0e96bff295fd44673ea909c35f2020512e77b2f2ec4db9)
+                                     ^
+
+1 error
+CPU time: .199 seconds to compile
+command exit code is '255'

@@ -1,0 +1,2 @@
+ OK input internal dependency (structural) <- Initial Check/Target Configuration/Analyze Target Configuration Results
+ KO output design/fs_macros.tcl does not exist -> Design/Build Fs Macro/Build Fs Macro Library

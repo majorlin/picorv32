@@ -1,0 +1,10 @@
+View: <error>
+  Xcui parse error(s)
+      /proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/zebu.work/backend_default/tools/zCui/synthesis_glog.xcui file does not exist.
+  Xcui parse error(s)
+      /proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/zebu.work/backend_default/tools/zCui/memff_glog.xcui file does not exist.
+  Xcui parse error(s)
+      /proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/zebu.work/backend_default/tools/zCui/zCui_compile_times_glog.xcui file does not exist.
+  Xcui parse error(s)
+      /proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/zebu.work/backend_default/tools/zCui/zCui_PNR_steps_glog.xcui file does not exist.
+

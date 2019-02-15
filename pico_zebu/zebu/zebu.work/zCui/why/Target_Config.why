@@ -1,0 +1,4 @@
+ KO input .././zse_configuration.tcl out of date (non equal checksum)
+ KO input internal dependency (always redo) <- Initial Check/Check Vcs Binaries Version
+ KO input internal dependency (always redo) <- Initial Check/Check Front-End Binaries Version
+ KO input internal dependency (always redo) <- Initial Check/Check Back-End Binaries Version

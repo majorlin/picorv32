@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* micro reset */
+* {
+	box-sizing: border-box;
+}
+html, body, ul {
+	padding: 0; margin: 0;
+}
+body {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+.main-header {
+	background: #FFF;
+	z-index : 5;
+}
+.header-inner {
+	display: table;
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 20px 25px;
+}
+.header-inner > * {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.header-nav {
+    background-color: #EEEEEE;
+	text-align: right;
+}
+.header-nav ul,
+.header-nav li {
+	display: inline;
+	list-style: none;
+}
+.header-nav a {
+	position: relative;
+	display: inline-block;
+	padding: 8px 20px;
+	vertical-align: middle;
+	font-weight: 300; /* between regular and light */
+	letter-spacing: 0.025em;
+	color: inherit;
+	text-decoration: none;
+}
+.header-nav a:after {
+	content: "";
+	position: absolute;
+	bottom: 0; right: 20px; left: 20px;
+	height: 2px;
+	background-color: #B13C2E;
+
+	/* for animation */
+	opacity: 0;
+	transform: translateY(5px);
+	transition: all .4s;
+}
+.header-nav a:hover:after,
+.header-nav a:focus:after {
+	opacity: .6;
+	bottom: 0;
+	transform: translateY(0);
+}
+.header-nav a:focus {
+	outline: none; /* I can do it because I already have a style for that */
+}
+
+/* When navbar is stuck */
+.nav-is-stuck .main-header {
+	position: sticky; 
+}
+.nav-is-stuck .main-header {
+	position: fixed;
+	top: 0; left: 0; right: 0;
+	box-shadow: 0 1px 4px rgba(0,0,0,.15);
+	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.15);
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,.15);
+	animation: stickAnim .3s;
+}
+
+@keyframes stickAnim {
+	0% {
+		transform: translateY(-86px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+#header {
+    margin: 0;
+    width: 100%;
+    padding-top: 10px;
+	padding-bottom: 10px;
+    border: 4px;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    text-align: center;
+    background-color: #88047a;
+    font-family: "Helvetica";
+    font-size: 2.0em;
+    color: #ffffff;
+}
+
+.timestamp {
+   font-family: "Helvetica";
+   font-size: 0.5em;
+}
+
+#footer {
+    margin: 0;
+    width: 100%;
+    border: 1px;
+    border-top-style: solid;
+    border-top-color: #bfbfbf;
+    text-align: center;
+    font-family: "Helvetica";
+    font-size: 1.0em;
+    color: #000000;
+}
+#all {
+    //display: table;
+    margin: 0;
+}
+row {
+    display: table-row;
+    margin: 0;
+}
+
+#content {
+    display : table-cell;
+    margin: 0;
+    border: 1px;
+//    border-left-style: solid;
+//    border-left-color: #bfbfbf;
+//    border-right-style: solid;
+//    border-right-color: #bfbfbf;
+    background-color: #ffffff;
+    font-family: "courier";
+    font-size: 14px;
+	padding-top: 5px;
+    padding-bottom: 50px;
+}
+.contentview {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 80px;
+}
+
+.contenttitle-container {
+    display: block;
+    position: relative;
+}
+.contenttitle-container:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  bottom: -4px;
+  left: 0;
+  border-bottom: 5px solid #000;
+  z-index: 1;
+}
+
+.contenttitle {
+    position: relative;
+    display: inline-block;
+    background-color: #000000;
+	border-top-right-radius : 15px;
+    color: #ffffff;
+    font-family: "Helvetica";
+    font-size: 30px;
+    padding: 12px;
+	padding-right: 30px;
+	z-index: 0;
+}
+
+.contenttitle:after {
+  position: absolute;
+  bottom: 0px;
+  width: 15px;
+  height: 15px;
+  content: " ";
+  right: -15px;
+  border: 1px solid #000;
+  border-bottom-left-radius: 15px;
+  border-width: 0 0 1px 1px;
+  box-shadow: -4px 4px 0 #000;
+  -webkit-box-shadow: -4px 4px 0 #000;
+  -moz-box-shadow: -4px 4px 0 #000;
+}
+
+.contenttitle-nav {
+   positive: fixed;
+   display: inline-block;
+   float: right;
+   top: 5%;
+   right: 5%;
+   width : 100px;
+   height: 30px;
+}
+
+.atocview {
+    text-decoration: none;
+    color: #ffffff;
+	background-color : #EEEEEE;
+    font-family: "Helvetica";
+    font-size: 22px;
+}
+.atoctitle0 {
+    text-decoration: none;
+    padding-left: 20px;
+    color: #1f1f7f;
+	background-color : #EEEEEE;
+    font-family: "Helvetica";
+    font-size: 20px;
+}
+.atoctitle1 {
+    text-decoration: none;
+    padding-left: 60px;
+    color: #7f7f1f;
+	background-color : #FFFFFF;
+    font-family: "Helvetica";
+    font-size: 18px;
+}
+h1 {
+    /*color: #1f1f7f;*/
+	color: #000000;
+    font-family: "Helvetica";
+}
+h2 {
+    color: #555555;
+    font-family: "Helvetica";
+}
+.toctableview {
+    background-color: #000000;
+    padding: 3px;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.toctable {
+    border: 1px;
+    border-style: solid;
+    margin: 8px;
+    border-inline-start-color: #bfbfbf;
+    border-inline-end-color: #bfbfbf;
+    border-block-start-color: #bfbfbf;
+    border-block-end-color: #bfbfbf;
+    margin-bottom: 20px;
+}
+.glogtable {
+    border: 1px;
+    margin: 8px;
+    border-style: solid;
+    background-color: #efefef;
+    border-collapse: collapse;
+}
+.glogtable th {
+    border: 1px solid #000000;
+	color: #FFFFFF;
+	background-color: #88047a;
+    padding: 2px;
+    text-align: right;
+    font-family: "Helvetica";
+}
+.glogtable td {
+    border: 1px;
+    border-style: solid;
+    padding: 2px;
+    text-align: right;
+}
+
+#menu, #menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+#menu {
+    margin-top: 10px;
+    text-align: left;
+}
+#menu li {
+    display: inline-block;
+}
+#menu ul li {
+    display: inherit;
+}
+#menu a {
+    text-decoration: none;
+    display: block;
+	color:#000;
+}
+#menu ul {
+    position: absolute;
+    left: -999em;
+    text-align: left;
+    z-index: 1000;
+}
+#menu li:hover ul {
+    left: auto;
+}
+</style>
+<title>Performance diagnostic profiler</title>
+</head>
+<body>
+<div id="header" class="main-header">
+<div>backend_default<span class="timestamp">&nbsp;Thu 14 Feb 2019 08:32:01 PM CST</span></div>
+<nav>
+<!-- toc -->
+<ul id="menu" class="header-nav">
+</ul></li></ul>
+
+</nav>
+</div>
+
+<div id="all">
+<div id="row">
+<div id="content">
+</div>
+</div>
+</div>
+<div style="clear:both"></div>
+<div id="footer">
+<div style="float: left; text-align: center; width: 50%;">Synopsys</div>
+<div style="float: right; text-align: center; width: 50%;">generated by zCui</div>
+</div>
+<script>
+/*
+	RequestAnimationFrame Polyfill
+
+	http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+	http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+	by Erik Möller, fixes from Paul Irish and Tino Zijdel
+
+	MIT license
+ */ 
+
+(function() {
+	var lastTime = 0;
+	var vendors = ['ms', 'moz', 'webkit', 'o'];
+	for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+		window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+		window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+	}
+
+	if ( ! window.requestAnimationFrame ) {
+		window.requestAnimationFrame = function(callback, element) {
+			var currTime = new Date().getTime();
+			var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+			var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+			timeToCall);
+			lastTime = currTime + timeToCall;
+			return id;
+		};
+	}
+
+	if ( ! window.cancelAnimationFrame ) {
+		window.cancelAnimationFrame = function(id) {
+			clearTimeout(id);
+		};
+	}
+}());
+
+
+/*
+	Sticky menu script
+ */
+
+(function(w,d,undefined){
+	var el_html = d.documentElement,
+		el_body = d.getElementsByTagName('body')[0],
+		header = d.getElementById('header'),
+		lastScroll = w.pageYOffset || el_body.scrollTop,
+
+		menuIsStuck = function(triggerElement, wScrollTop, lastScroll) {
+			var regexp		= /(nav\-is\-stuck)/i,
+				classFound	= el_html.className.match( regexp ),
+				navHeight	= header.offsetHeight,
+				bodyRect	= el_body.getBoundingClientRect(),
+				scrollValue	= triggerElement ? triggerElement.getBoundingClientRect().top - bodyRect.top - navHeight  : 800,
+				scrollValFix = classFound ? scrollValue : scrollValue + navHeight;
+
+			// if scroll down is 700 or more AND nav-is-stuck class doesn't exist AND we are going up
+			if ( wScrollTop > scrollValFix && !classFound && wScrollTop < lastScroll ) {
+				el_html.className = el_html.className + ' nav-is-stuck';
+				el_body.style.paddingTop = navHeight + 'px';
+			}
+
+			// if we are to high in the page AND nav-is-stuck class exists
+			if ( classFound && wScrollTop > lastScroll ) {
+				el_html.className = el_html.className.replace( regexp, '' );
+				el_body.style.paddingTop = '0px';
+			}
+		},
+
+		onScrolling = function() {
+			var wScrollTop = w.pageYOffset || el_body.scrollTop;
+			
+			// use scroll datas as parameters...
+			menuIsStuck( d.getElementById('main'), wScrollTop, lastScroll );
+			
+			// save current scroll as last scroll position
+			lastScroll = wScrollTop;
+			
+		};
+
+
+	el_html.className = el_html.className + ' js';
+
+	// when you scroll, fire onScrolling() function
+	w.addEventListener('scroll', function(){
+		w.requestAnimationFrame( onScrolling );
+	});
+
+}(window, document));
+</script>
+</body>
+</html>

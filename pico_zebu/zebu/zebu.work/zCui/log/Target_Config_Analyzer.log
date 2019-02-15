@@ -1,0 +1,49 @@
+Virtex type: 7
+
+Not a Multi Die Target 
+
+FPGA filling rates for backend 
+Safe Mode
+Register Filling Rates = 15
+LUT Filling Rates = 40
+RAMLUT Filling Rates = 40
+BRAM Filling Rates = 50
+DSP Filling Rates = 40
+SDT Filling Rates = 0
+QiWC Filling Rates = 30
+
+Medium Mode
+Register Filling Rates = 22
+LUT Filling Rates = 50
+RAMLUT Filling Rates = 40
+BRAM Filling Rates = 50
+DSP Filling Rates = 50
+SDT Filling Rates = 0
+QiWC Filling Rates = 40
+
+Aggressive Mode
+Register Filling Rates = 30
+LUT Filling Rates = 55
+RAMLUT Filling Rates = 55
+BRAM Filling Rates = 95
+DSP Filling Rates = 95
+SDT Filling Rates = 0
+QiWC Filling Rates = 50
+
+Max number of block
+BRAM = 645
+RAMLUT = 34480
+
+Disk Space Constants
+Average size of a design / Fpga = 302 MB
+Average size of synthesis = 1.04 MB
+Average size of backend directory / Fpga = 229 MB
+Average size of zCore / Fpga = 164 MB
+Size of a Fpga = 156.7 MB
+Size of an elaboration = 400 MB
+Size of a Verdi database = 517 MB
+
+Vcs configuration file written: vcs_splitter/vcs_splitter_config_file
+additional Zmem command file written
+ZTime_fpga flow built
+Target Configuration Results Analyzed

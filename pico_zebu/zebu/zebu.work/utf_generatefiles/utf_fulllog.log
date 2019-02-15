@@ -1,0 +1,12 @@
+Info: UTF file:        ../src/env/pico_device_wrapper.utf
+Info: Empty file path:      /run/pkg/synopsys-vcs_mx-/M-2017.03-SP2-10-Z/etc/unizfe/utf/Empty.tcl
+Info: Mappings file path:   /run/pkg/synopsys-vcs_mx-/M-2017.03-SP2-10-Z/etc/unizfe/utf/Mappings.tcl
+Info: libzucf.so path:      /run/pkg/synopsys-vcs_mx-/M-2017.03-SP2-10-Z/linux64/lib/libzucf.so
+Info: Output target folder: zebu.work/utf_generatefiles
+Info: Full Log Name:        zebu.work/utf_generatefiles/utf_fulllog.log
+Info: Summary Log Name:     zebu.work/utf_generatefiles/utf_summary.log
+Info: Using CCI Intrpreter
+Info: Translation flow: zebu
+
+Info: Tcl files parsed successfully
+

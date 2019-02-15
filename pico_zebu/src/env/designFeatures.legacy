@@ -1,0 +1,5 @@
+$U0.M0.clk.Waveform = "_-";
+$U0.M0.clk.VirtualFrequency = 1;
+
+$nbProcess = 1;
+$process_0 = "uart";

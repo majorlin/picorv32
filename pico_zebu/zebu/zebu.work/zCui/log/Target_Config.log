@@ -1,0 +1,55 @@
+                                        
+                                    ZeBu (R)
+                                  zTargetTools
+                                        
+                           Version M-2017.03-SP1-4  
+                                        
+                   Copyright (c) 2002 - 2018 by Synopsys, Inc
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+
+# zTargetTools zTargetTools.tcl 
+
+# start time is Thu Feb 14 20:30:48 2019
+
+
+
+
+# Build Date : Aug 21 2018 - 00:45:56
+# ---------------------------System Context--------------------------- 
+# Cpu        16 x bogomips - 5399.21 Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz
+#            Load: 54.41 54.21 54.20 2/1439 64058
+#            Hostname: lc2490-tx30   OS: Linux 2.6.32-504.12.2.el6.x86_64
+# Memory     Total: 128969 MB Free: 19067 MB
+#            Swap space: 131069 MB Free Swap space: 98583 MB
+#            VmSize: 36 MB VmPeak: 36 MB
+# Disk Space Total: 2000 GB Available: 484 GB Used: 1516 GB
+#            Free inodes: 28227732
+# Stack                                Soft Limit           Hard Limit  
+#            Max stack size            unlimited            unlimited            bytes     
+# -------------------------------------------------------------------- 
+
+
+# Configuration used is:
+#   valid machines   : 
+#   created by       : b37173
+#   date             : Wed Jan 24 11:59:41 2018
+#   based on release : /run/pkg/synopsys-zebu-/M-2017.03-SP1-1
+#   platform type    : ZS3
+Loading basic configuration
+Loading ZeBu-Server 5 slots main board configuration
+Loading 8 FPGAs module configuration (ref zse_xc7v_8c_2000_v1)
+#
+#  pos | name  | module
+# -----+-------+--------------------------
+#    0 | U0.M0 | zse_xc7v_8c_2000_v1 
+#    1 | U0.M1 | zse_xc7v_8c_2000_v1 
+#    2 | U0.M2 | zse_xc7v_8c_2000_v1 
+#    3 | U0.M3 | zse_xc7v_8c_2000_v1 
+#    4 | U0.M4 | zse_xc7v_8c_2000_v1 
+#
+#   step TARGET INFO : Loading target informations from file '.././zse_configuration.tcl'
+#   step TARGET INFO : Driving target informations in file 'zTargetTools.xcui'
+command exit code is '0'

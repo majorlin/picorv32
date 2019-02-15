@@ -1,0 +1,266 @@
+                                        
+                                    ZeBu (R)
+                                  zTargetTools
+                                        
+                           Version M-2017.03-SP1-4  
+                                        
+                   Copyright (c) 2002 - 2018 by Synopsys, Inc
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+
+# zTargetTools zTargetTools.tcl 
+
+# start time is Thu Feb 14 20:30:48 2019
+
+
+
+
+# Build Date : Aug 21 2018 - 00:45:56
+# ---------------------------System Context--------------------------- 
+# Cpu        16 x bogomips - 5399.21 Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz
+#            Load: 54.41 54.21 54.20 2/1439 64058
+#            Hostname: lc2490-tx30   OS: Linux 2.6.32-504.12.2.el6.x86_64
+# Memory     Total: 128969 MB Free: 19067 MB
+#            Swap space: 131069 MB Free Swap space: 98583 MB
+#            VmSize: 36 MB VmPeak: 36 MB
+# Disk Space Total: 2000 GB Available: 484 GB Used: 1516 GB
+#            Free inodes: 28227732
+# Stack                                Soft Limit           Hard Limit  
+#            Max stack size            unlimited            unlimited            bytes     
+# -------------------------------------------------------------------- 
+
+
+#   step ENV.VAR : LM_LICENSE_FILE=26585@curl-e
+#   step ENV.VAR : SNPSLMD_LICENSE_FILE=26585@cde-az84-108va:26585@curl-a:26585@curl-b:26585@curl-c:26585@curl-d:26585@curl-e:26585@curl-f:26585@curl-h:26585@curl-k:26585@curl-x:26585@curl-y:26585@luge-b:26585@run-a:26585@run-c:26585@skate-c:9707@liv0019.nxdi.us-cdc01.nxp.com:9707@liv0057.nxdi.us-cdc01.nxp.com:9707@liv0057.nxdi.us-cdc01.nxp.com]9707@liv0061.nxdi.nl-cdc01.nxp.com:9707@liv0061.nxdi.nl-cdc01.nxp.com:9707@liv0062.nxdi.nl-cdc01.nxp.com:9707@liv0064.nxdi.us-cdc01.nxp.com:9707@liv6012.in-blr01.nxp.com:9707@liv9009.nxdi.de-hbg01.nxp.com:mailto
+#   step ENV.VAR : VCS_HOME=/run/pkg/synopsys-vcs_mx-/M-2017.03-SP2-10-Z
+#   step ENV.VAR : VERDI_HOME=/run/pkg/synopsys-verdi3-/M-2017.03-SP2-11.Z-2
+#   step ENV.VAR : XILINXD_LICENSE_FILE=mailto:9707@liv0057.nxdi.us-cdc01.nxp.com:9712@liv0057.nxdi.us-cdc01.nxp.com]9707@liv0057.nxdi.us-cdc01.nxp.com:9712@liv0057.nxdi.us-cdc01.nxp.com
+#   step ENV.VAR : ZEBU_DRIVER_PATH=/run/pkg/synopsys-zebu-/M-2017.03-SP1-4/drivers
+#   step ENV.VAR : ZEBU_INTERNAL_SIGNAL=urg
+#   step ENV.VAR : ZEBU_IP_ROOT=/proj/mcu_zebu/ZEBU_IP_2017.12
+#   step ENV.VAR : ZEBU_ROOT=/run/pkg/synopsys-zebu-/M-2017.03-SP1-4
+#   step ENV.VAR : ZEBU_RUN_CONIFG=SW_HW
+#   step ENV.VAR : ZEBU_SYSTEM_DIR=/proj/mcu_zebu_adm/ZEBU_SYSTEM_DIR/zebu11
+#   step ENV.VAR : ZEBU_TRITON_ZS3=/run/pkg/synopsys-zebu-/M-2017.03-SP1-4/triton_zs3
+#   step ENV.VAR : ZEBU_XIL=/run/pkg/synopsys-zebu-/M-2017.03-SP1-4/vivado/ids_lite
+#   step ENV.VAR : ZEBU_XIL_VIVADO=/run/pkg/synopsys-zebu-/M-2017.03-SP1-4/vivado/ids_lite
+set_backend_target default .././zse_configuration.tcl 0
+set_filling_rate virtex5 low reg=50 lut=47 bram=70 dsp=40 ramlut=40 fwc=40 qiwc=100
+set_filling_rate virtex5 default reg=55 lut=52 bram=80 dsp=50 ramlut=40 fwc=63 qiwc=100
+set_filling_rate virtex5 high reg=65 lut=57 bram=100 dsp=100 ramlut=70 fwc=94 qiwc=100
+set_filling_rate virtex5 gtl_low reg=60 lut=57 bram=70 dsp=40 ramlut=40 fwc=40 qiwc=100
+set_filling_rate virtex5 gtl_default reg=65 lut=62 bram=80 dsp=50 ramlut=40 fwc=63 qiwc=100
+set_filling_rate virtex5 gtl_high reg=75 lut=67 bram=100 dsp=100 ramlut=70 fwc=94 qiwc=100
+set_filling_rate virtex6 low reg=15 lut=40 bram=70 dsp=40 ramlut=40 fwc=20 qiwc=100
+set_filling_rate virtex6 default reg=22 lut=50 bram=80 dsp=50 ramlut=40 fwc=31 qiwc=100
+set_filling_rate virtex6 high reg=23 lut=55 bram=100 dsp=100 ramlut=55 fwc=47 qiwc=100
+set_filling_rate virtex6 gtl_low reg=25 lut=50 bram=70 dsp=40 ramlut=40 fwc=20 qiwc=100
+set_filling_rate virtex6 gtl_default reg=32 lut=60 bram=80 dsp=50 ramlut=40 fwc=31 qiwc=100
+set_filling_rate virtex6 gtl_high reg=33 lut=65 bram=100 dsp=100 ramlut=55 fwc=47 qiwc=100
+set_filling_rate virtex7 low reg=15 lut=40 bram=50 dsp=40 ramlut=40 fwc=10 qiwc=30
+set_filling_rate virtex7 default reg=22 lut=50 bram=50 dsp=50 ramlut=40 fwc=18 qiwc=40
+set_filling_rate virtex7 high reg=30 lut=55 bram=95 dsp=95 ramlut=55 fwc=25 qiwc=50
+set_filling_rate virtex7 gtl_low reg=25 lut=50 bram=50 dsp=40 ramlut=40 fwc=10 qiwc=30
+set_filling_rate virtex7 gtl_default reg=32 lut=60 bram=50 dsp=50 ramlut=40 fwc=18 qiwc=40
+set_filling_rate virtex7 gtl_high reg=40 lut=65 bram=95 dsp=95 ramlut=55 fwc=25 qiwc=50
+set_filling_rate virtex8 low reg=15 lut=40 bram=50 dsp=40 ramlut=40 fwc=10 qiwc=30
+set_filling_rate virtex8 default reg=22 lut=50 bram=60 dsp=60 ramlut=40 fwc=18 qiwc=40
+set_filling_rate virtex8 high reg=30 lut=55 bram=95 dsp=95 ramlut=55 fwc=25 qiwc=50
+set_filling_rate virtex8 gtl_low reg=25 lut=50 bram=50 dsp=40 ramlut=40 fwc=10 qiwc=30
+set_filling_rate virtex8 gtl_default reg=32 lut=60 bram=60 dsp=60 ramlut=40 fwc=18 qiwc=40
+set_filling_rate virtex8 gtl_high reg=40 lut=65 bram=95 dsp=95 ramlut=55 fwc=25 qiwc=50
+set_disk_space virtex5 -ctype cstg 302
+set_disk_space virtex6 -ctype cstg 302
+set_disk_space virtex7 -ctype cstg 302
+set_disk_space virtex8 -ctype cstg 302
+set_disk_space virtex5 -ctype csts 1.04
+set_disk_space virtex6 -ctype csts 1.04
+set_disk_space virtex7 -ctype csts 1.04
+set_disk_space virtex8 -ctype csts 1.04
+set_disk_space virtex5 -ctype cstb 229
+set_disk_space virtex6 -ctype cstb 229
+set_disk_space virtex7 -ctype cstb 229
+set_disk_space virtex8 -ctype cstb 229
+set_disk_space virtex5 -ctype cstc 164
+set_disk_space virtex6 -ctype cstc 164
+set_disk_space virtex7 -ctype cstc 164
+set_disk_space virtex8 -ctype cstc 164
+set_disk_space virtex5 -ctype cstx 156.7
+set_disk_space virtex6 -ctype cstx 156.7
+set_disk_space virtex7 -ctype cstx 156.7
+set_disk_space virtex8 -ctype cstx 156.7
+set_disk_space virtex5 -ctype cste 400
+set_disk_space virtex6 -ctype cste 400
+set_disk_space virtex7 -ctype cste 400
+set_disk_space virtex8 -ctype cste 400
+set_disk_space virtex5 -ctype cstv 517
+set_disk_space virtex6 -ctype cstv 517
+set_disk_space virtex7 -ctype cstv 517
+set_disk_space virtex8 -ctype cstv 517
+set_resource_max virtex5 bram=172 ramlut=5184
+set_resource_max virtex6 bram=359 ramlut=13248
+set_resource_max virtex7 bram=645 ramlut=34480
+set_resource_max virtex8 bram=645 ramlut=34480
+System quiet 
+System quiet 
+Component new XC5V330 
+Component set XC5V330.type PROGRAMMABLE 
+Component set XC5V330.usetype DESIGN 
+Component set XC5V330.part 5vlx330-1-ff1760 
+Component set XC5V330.die 1 
+Component new XC5V110 
+Component set XC5V110.type PROGRAMMABLE 
+Component set XC5V110.usetype DESIGN 
+Component set XC5V110.part 5vlx110-1-ff1760 
+Component set XC5V110.die 1 
+Component new XC5V330_IF 
+Component set XC5V330_IF.type PROGRAMMABLE 
+Component set XC5V330_IF.usetype IF 
+Component set XC5V330_IF.part 5vlx330-1-ff1760 
+Component set XC5V330_IF.die 1 
+Component new XC5V110_IF 
+Component set XC5V110_IF.type PROGRAMMABLE 
+Component set XC5V110_IF.usetype IF 
+Component set XC5V110_IF.part 5vlx110-1-ff1760 
+Component set XC5V110_IF.die 1 
+Component new XC6V760 
+Component set XC6V760.type PROGRAMMABLE 
+Component set XC6V760.usetype DESIGN 
+Component set XC6V760.part 6vlx760-1-ff1760 
+Component set XC6V760.die 1 
+Component new XC6V760_IF 
+Component set XC6V760_IF.type PROGRAMMABLE 
+Component set XC6V760_IF.usetype IF 
+Component set XC6V760_IF.part 6vlx760-1-ff1760 
+Component set XC6V760_IF.die 1 
+Component new XC6V550 
+Component set XC6V550.type PROGRAMMABLE 
+Component set XC6V550.usetype DESIGN 
+Component set XC6V550.part 6vlx550t-1-ff1760 
+Component set XC6V550.die 1 
+Component new XC6V550_IF 
+Component set XC6V550_IF.type PROGRAMMABLE 
+Component set XC6V550_IF.usetype IF 
+Component set XC6V550_IF.part 6vlx550t-1-ff1760 
+Component set XC6V550_IF.die 1 
+Component new XC7V2000 
+Component set XC7V2000.type PROGRAMMABLE 
+Component set XC7V2000.usetype DESIGN 
+Component set XC7V2000.part 7vlx2000tff1925 
+Component set XC7V2000.die 1 
+Component new XC7V2000_DIE 
+Component set XC7V2000_DIE.type PROGRAMMABLE 
+Component set XC7V2000_DIE.usetype DESIGN 
+Component set XC7V2000_DIE.part 7vlx2000tff1925:die 
+Component set XC7V2000_DIE.die 4 
+Component new XC7V2000_IF 
+Component set XC7V2000_IF.type PROGRAMMABLE 
+Component set XC7V2000_IF.usetype IF 
+Component set XC7V2000_IF.part 7vlx2000tff1925 
+Component set XC7V2000_IF.die 1 
+Component new XCVU440 
+Component set XCVU440.type PROGRAMMABLE 
+Component set XCVU440.usetype DESIGN 
+Component set XCVU440.part xcvu440flva2892 
+Component set XCVU440.die 1 
+Component new XCVU440_DIE 
+Component set XCVU440_DIE.type PROGRAMMABLE 
+Component set XCVU440_DIE.usetype DESIGN 
+Component set XCVU440_DIE.part xcvu440flva2892:die 
+Component set XCVU440_DIE.die 3 
+Component new XCVU440_IF 
+Component set XCVU440_IF.type PROGRAMMABLE 
+Component set XCVU440_IF.usetype IF 
+Component set XCVU440_IF.part xcvu440flva2892 
+Component new M21605 
+Component set M21605.type PROGRAMMABLE 
+Component set M21605.usetype HUBCOMP 
+Component set M21605.part MACOM21605 
+Component new ZSE_ICE_CONNECTOR 
+Component set ZSE_ICE_CONNECTOR.type MACRO 
+Component set ZSE_ICE_CONNECTOR.part SMC_Q_50 
+Component set ZSE_ICE_CONNECTOR.class DIRECT_ICE 
+Component new ZSE_ZALTA_CONNECTOR 
+Component set ZSE_ZALTA_CONNECTOR.type MACRO 
+Component set ZSE_ZALTA_CONNECTOR.part SMC_Q_50 
+Component set ZSE_ZALTA_CONNECTOR.class DIRECT_ICE 
+System quiet 
+Target new zebu 
+Target set zebu.netlist /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/etc/sys/ZSE/edifs/zse_sbp_5s_v3.edf.gz 
+Target set zebu.top zse_sbp_5s 
+Target set zebu.product zse 
+Target set zebu.zparfwlib zse_hw_zPar.edf.gz 
+Target set zebu.zrmfwlib zse_hw_zrm.edf.gz 
+Target set zebu.zfwfwlib zse_hw_zFW.edf.gz 
+Target set zebu.mbname zse_sbp_5s 
+Target set zebu.id 5S 
+Target set zebu.frequency 450 
+Target set zebu.trace on 
+System quiet 
+Module new zse_xc7v_8c_2000_v1 
+Module set zse_xc7v_8c_2000_v1.netlist /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/etc/sys/ZSE/edifs/zse_xc7v_8c_2000_v1.edf.gz 
+Module set zse_xc7v_8c_2000_v1.rtbconfig /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/etc/sys/ZSE/configs/zse_xc7v_8c_2000_v1_rtb.tcl 
+Module set zse_xc7v_8c_2000_v1.top zse_xc7v_8c_v1 
+Module set zse_xc7v_8c_2000_v1.type zse_module 
+Module set zse_xc7v_8c_2000_v1.fwlibname zse_xc7v_8c_v1 
+Module set zse_xc7v_8c_2000_v1.id XC7V_8C 
+Module set zse_xc7v_8c_2000_v1.bufg 6 20 
+Component new F00_ZSE_XC7V_8C_2000_V1 
+Component set F00_ZSE_XC7V_8C_2000_V1.type XC7V2000 
+Component set F00_ZSE_XC7V_8C_2000_V1.bitgen_options -w -g DriveDONE:Yes -g persist:x32 -g StartUpClk:CCLK -g OverTempPowerDown:Enable 
+Module set zse_xc7v_8c_2000_v1.component 0 F00_ZSE_XC7V_8C_2000_V1 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 0 32x64 dram 0 0 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 1 32x64 dram 1 0 
+Component new F01_ZSE_XC7V_8C_2000_V1 
+Component set F01_ZSE_XC7V_8C_2000_V1.type XC7V2000 
+Component set F01_ZSE_XC7V_8C_2000_V1.bitgen_options -w -g DriveDONE:Yes -g persist:x32 -g StartUpClk:CCLK -g OverTempPowerDown:Enable 
+Module set zse_xc7v_8c_2000_v1.component 1 F01_ZSE_XC7V_8C_2000_V1 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 2 32x64 dram 0 1 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 3 32x64 dram 1 1 
+Component new F02_ZSE_XC7V_8C_2000_V1 
+Component set F02_ZSE_XC7V_8C_2000_V1.type XC7V2000 
+Component set F02_ZSE_XC7V_8C_2000_V1.bitgen_options -w -g DriveDONE:Yes -g persist:x32 -g StartUpClk:CCLK -g OverTempPowerDown:Enable 
+Module set zse_xc7v_8c_2000_v1.component 2 F02_ZSE_XC7V_8C_2000_V1 
+Component new F03_ZSE_XC7V_8C_2000_V1 
+Component set F03_ZSE_XC7V_8C_2000_V1.type XC7V2000 
+Component set F03_ZSE_XC7V_8C_2000_V1.bitgen_options -w -g DriveDONE:Yes -g persist:x32 -g StartUpClk:CCLK -g OverTempPowerDown:Enable 
+Module set zse_xc7v_8c_2000_v1.component 3 F03_ZSE_XC7V_8C_2000_V1 
+Component new F04_ZSE_XC7V_8C_2000_V1 
+Component set F04_ZSE_XC7V_8C_2000_V1.type XC7V2000 
+Component set F04_ZSE_XC7V_8C_2000_V1.bitgen_options -w -g DriveDONE:Yes -g persist:x32 -g StartUpClk:CCLK -g OverTempPowerDown:Enable 
+Module set zse_xc7v_8c_2000_v1.component 4 F04_ZSE_XC7V_8C_2000_V1 
+Component new F05_ZSE_XC7V_8C_2000_V1 
+Component set F05_ZSE_XC7V_8C_2000_V1.type XC7V2000 
+Component set F05_ZSE_XC7V_8C_2000_V1.bitgen_options -w -g DriveDONE:Yes -g persist:x32 -g StartUpClk:CCLK -g OverTempPowerDown:Enable 
+Module set zse_xc7v_8c_2000_v1.component 5 F05_ZSE_XC7V_8C_2000_V1 
+Component new F06_ZSE_XC7V_8C_2000_V1 
+Component set F06_ZSE_XC7V_8C_2000_V1.type XC7V2000 
+Component set F06_ZSE_XC7V_8C_2000_V1.bitgen_options -w -g DriveDONE:Yes -g persist:x32 -g StartUpClk:CCLK -g OverTempPowerDown:Enable 
+Module set zse_xc7v_8c_2000_v1.component 6 F06_ZSE_XC7V_8C_2000_V1 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 4 32x64 dram 0 6 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 5 32x64 dram 1 6 
+Component new F07_ZSE_XC7V_8C_2000_V1 
+Component set F07_ZSE_XC7V_8C_2000_V1.type XC7V2000 
+Component set F07_ZSE_XC7V_8C_2000_V1.bitgen_options -w -g DriveDONE:Yes -g persist:x32 -g StartUpClk:CCLK -g OverTempPowerDown:Enable 
+Module set zse_xc7v_8c_2000_v1.component 7 F07_ZSE_XC7V_8C_2000_V1 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 6 32x64 dram 0 7 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 7 32x64 dram 1 7 
+Component new F08_ZSE_XC7V_8C_2000_V1 
+Component set F08_ZSE_XC7V_8C_2000_V1.type XC7V2000 
+Component set F08_ZSE_XC7V_8C_2000_V1.bitgen_options -w -g DriveDONE:Yes -g persist:x32 -g StartUpClk:CCLK -g OverTempPowerDown:Enable 
+Module set zse_xc7v_8c_2000_v1.component 8 F08_ZSE_XC7V_8C_2000_V1 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 8 128x512 dram 0 8 
+Module set zse_xc7v_8c_2000_v1.embedded_zrm 9 128x512 dram 1 8 
+Component new IF_ZSE_XC7V_8C_2000_V1 
+Component set IF_ZSE_XC7V_8C_2000_V1.type XC7V2000_IF 
+Component set IF_ZSE_XC7V_8C_2000_V1.bitgen_options do not edit this line (set by zRTB_FW via zse_xc7v_8c_2000_v1_rtb.tcl) 
+Module set zse_xc7v_8c_2000_v1.component 9 IF_ZSE_XC7V_8C_2000_V1 
+Target set zebu.module 0 U0.M0 zse_xc7v_8c_2000_v1  07C2 
+Target set zebu.module 1 U0.M1 zse_xc7v_8c_2000_v1  1172 
+Target set zebu.module 2 U0.M2 zse_xc7v_8c_2000_v1  1152 
+Target set zebu.module 3 U0.M3 zse_xc7v_8c_2000_v1  1762 
+Target set zebu.module 4 U0.M4 zse_xc7v_8c_2000_v1  1642 
+#   step TARGET INFO : Loading target informations from file '.././zse_configuration.tcl'
+#   step TARGET INFO : Driving target informations in file 'zTargetTools.xcui'

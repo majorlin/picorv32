@@ -1,0 +1,87 @@
+
+
+                                        
+                                    ZeBu (R)
+                                      zFe
+                                        
+                           Version M-2017.03-SP1-4  
+                                        
+                   Copyright (c) 2002 - 2018 by Synopsys, Inc
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+
+
+#   info : #----------------------------------------------------------------
+#   info : Setup
+#   info : #----------------------------------------------------------------
+# command line is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/zFe fs_macros.tcl -log fsMacro.log -zlog 1 
+# start time is Thu Feb 14 20:31:35 CST 2019
+#   step Setup : CVS $Revision: #15 $
+#   step Setup : CVS $Date: 2018/06/15 $
+#   step Setup : Tcl executable is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/ztclsh
+#   step Setup : Tcl version is 8.6
+#   step Setup : Tcl patch level is 8.6.3
+#   step Setup : Tcl library directory is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/tcl/tcl8.6
+#   step Setup : execing Tcl status is 1
+#   step Setup : execing passed (something written to stderr, which is why Tcl status was 1)
+#   step Setup : Path to zFe is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin
+#   step Setup : zFe's current directory is /proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/zebu.work/design
+#   step Setup : 'which hlog' is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/hlog
+#   step Setup : 'which hcom' is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/hcom
+#   step Setup : 'which hcs_mixed' is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/hcs_mixed
+#   step Setup : 'which vhorder' is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/vhorder
+#   step Setup : 'which vhs' is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/vhs
+#   step Setup : 'which zKeepRtlNames' is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/zKeepRtlNames
+#   step Setup : 'which zNetgen' is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/zNetgen
+#   step Setup : 'which zfast' is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/zfast
+#   step Setup : 'which UPFproblemCheck' is /pkg/fs-foundation-/dynamic/bin/UPFproblemCheck
+#   step Setup : 'which zCui' is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/bin/zCui
+#   step Setup : pid_hostname is 64304_lc2490-tx30.am.freescale.net_5c662487 
+#   step Setup : Environment variable ZEBU_ROOT is /run/pkg/synopsys-zebu-/M-2017.03-SP1-4
+#   step Setup : Have set the data path to /run/pkg/synopsys-zebu-/M-2017.03-SP1-4
+#   step Setup : Environment variable THARAS_ROOT has been set to /run/pkg/synopsys-zebu-/M-2017.03-SP1-4, because it was not set.
+#   step Setup : Environment variable HCS_USECONFIG has been set to vcs, because it was not set.
+#   step Setup : Environment variable EVE_VHDL_PACKAGE_ROOT has been set to /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/etc/vhs/vhdl/vhdl_packages/x86_64, because it was not set.
+#   step Setup : Environment variable VHDL_PDIR has been set to /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/etc/vhs/vhdl/vhdl_packages/x86_64, because it was not set.
+#   step Setup : Environment variable JAGUAR_HOME has been set to ., because it was not set.
+#   step Setup : Debug flag = 0
+#   step Setup : Attribute files read: /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/etc/vhs/hcsrc.zfs
+#   step Setup : Debug flag = 0
+#   step Setup : Attribute files read: /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/etc/vhs/hcsrc.zfs
+     /run/pkg/synopsys-zebu-/M-2017.03-SP1-4/etc/vhs/hcsrc.zcui
+#   step Setup : Sourcing file fs_macros.tcl
+#   step Setup :         NEXT CALL to cmn::option auto_hcsrc true
+#   step Setup :         NEXT CALL to cmn::option technology vtx7
+#   info : #----------------------------------------------------------------
+#   info : dump_macro_lib
+#   info : #----------------------------------------------------------------
+#   step dump_macro_lib :         NEXT CALL to cmn::dump_macro_lib fs_macros.edf
+#   step dump_macro_lib : Execing the following command:
+#   step dump_macro_lib :    zfast +hcs+atf ./hcsrc_zfast_dump_macro_lib_01.parsed_args
+#   step ALWAYS : 
+                                        
+                                    ZeBu (R)
+                                     zfast
+                                        
+                           Version M-2017.03-SP1-4  
+                                        
+                   Copyright (c) 2002 - 2018 by Synopsys, Inc
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+
+#   step dump_macro_lib : execing Tcl status is 0
+#   step dump_macro_lib : execing passed (nothing written to stderr)
+#   step dump_macro_lib : Deleting zfast_dump_macro_lib_dir/simh_01.simdir
+#   step dump_macro_lib : Deleting ./hcsrc_zfast_dump_macro_lib_01.parsed_args
+#   step dump_macro_lib : Sourcing file fs_macros.tcl returned the result string '0'
+#   step dump_macro_lib : Sourcing file fs_macros.tcl has completed.
+
+#   step exec summary : time 0m23.64897s
+#   exec summary : Total memory: 0000 kB minimum 
+#   exec summary : Successful execution
+
+# end time is Thu Feb 14 20:31:58 CST 2019

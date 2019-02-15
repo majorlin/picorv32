@@ -1,0 +1,71 @@
+wvSetPosition -win $_nWave1 {("G1" 0)}
+wvOpenFile -win $_nWave1 \
+           {/proj/mcu_zebu/users/b51677/sverilog/zebu/pico_soc/zebu/monitor.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/testbench"
+wvGetSignalSetScope -win $_nWave1 "/testbench/uut"
+wvGetSignalSetScope -win $_nWave1 "/testbench/uut/soc"
+wvGetSignalSetScope -win $_nWave1 "/testbench/uut/soc/cpu"
+wvGetSignalSetScope -win $_nWave1 "/testbench/uut/soc/cpu/cpuregs"
+wvGetSignalSetScope -win $_nWave1 "/testbench/uut/soc/simpleuart"
+wvSetPosition -win $_nWave1 {("G1" 16)}
+wvSetPosition -win $_nWave1 {("G1" 16)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/testbench/TXD} \
+{/testbench/_I_RxD_} \
+{/testbench/_I_nrst_} \
+{/testbench/clk} \
+{/testbench/flash_io0} \
+{/testbench/uut/clk} \
+{/testbench/uut/debug_ser_rx} \
+{/testbench/uut/debug_ser_tx} \
+{/testbench/uut/flash_io0} \
+{/testbench/uut/ser_tx} \
+{/testbench/uut/soc/cpu/cpuregs/clk} \
+{/testbench/uut/soc/cpu/cpuregs/raddr1\[5:0\]} \
+{/testbench/uut/soc/cpu/cpuregs/raddr2\[5:0\]} \
+{/testbench/uut/soc/cpu/cpuregs/rdata1\[31:0\]} \
+{/testbench/uut/soc/cpu/cpuregs/rdata2\[31:0\]} \
+{/testbench/uut/soc/simpleuart/ser_tx} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 16 )} 
+wvSetPosition -win $_nWave1 {("G1" 16)}
+wvZoomAll -win $_nWave1
+wvZoomAll -win $_nWave1
+wvZoomAll -win $_nWave1
+wvZoomAll -win $_nWave1
+wvZoomAll -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 30108.040863 -snap {("G1" 3)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 0.497629 -snap {("G1" 3)}
+wvExit

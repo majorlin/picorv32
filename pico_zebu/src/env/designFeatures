@@ -1,0 +1,118 @@
+############################################
+################## PROCESS #################
+############################################
+$nbProcess = 1;
+$Process_0 = "uart";
+
+############################################
+################# xTors PORTS ##############
+############################################
+
+######## xTors features declaration ######
+# $testbench.uart_driver_0::port_msg_out_0.nbMessMax = 2730;
+# $zemi3XTorGroup_#groupIndex.processName="#process_name_for_groupIndex_zemi3_xTor_group_list";
+# $zemi3XTorGroup_#groupIndex.xtorList="#zemi3_xTor_group_list";
+# where #groupIndex is between 0 and 63
+
+############################################
+################## SYSTEM CLOCKS ###########
+############################################
+
+######## System frequency declaration (MHz) ########
+$idelClk.Frequency = 200000;
+
+############################################
+################## CLOCKS ##################
+############################################
+
+######## driverClk declaration (kHz) ########
+# Note :  driverClk <= $sysFrequency/2
+$driverClk.Frequency = 10000;
+$driverClk.MaxFrequency = 10000;
+# Note : number of driverClock cycles while reset is active
+$driverClk.Reset = 0;
+# Note : for no automatic frequency change during FWC set $driverClk.FwcsFrequency = "driverClk.Frequency";
+
+######## New clocks declaration ########
+# This allows you to create a dummy clock (useful for Tracking/Monitoring over sampling)
+# Note : only 16 clocks are available (including your design clocks)
+# $newClock = "U0.M0.dummy_clock";
+#     - No new clock detected -
+
+######## User clocks parameters declaration (kHz) ########
+# This allows you to define your groups parameters
+# $U0.M0.myGroup.Tolerance = "no | yes";
+#
+# This allows you to define your clocks parameters and link clocks in a same group
+# Note : "my_realFreq" is a float kHz value
+# Note : "my_virtFreq" is a decimal kHz value
+# Note : "my_group" is "myGroup" by default
+# $U0.M0.my_clock.Waveform = "_-";
+# $U0.M0.my_clock.Mode = "controlled | delay-controlled";
+# $U0.M0.my_clock.Frequency = my_realFreq;
+# $U0.M0.my_clock.VirtualFrequency = my_virtFreq;
+# $U0.M0.my_clock.GroupName = "my_group";
+# $U0.M0.my_clock.Tolerance = "no | yes";
+#
+# Note : Your design clocks are (possible labels for "my_clock") :
+#     -0- testbench.clk 
+#
+# Your current clocks parameters are :
+#     -0- testbench.clk
+$U0.M0.testbench.clk.Waveform = "_-";
+$U0.M0.testbench.clk.Mode = "controlled";
+# No Frequency defined
+# No TimePeriod defined
+# No DelayUnit defined
+# No DutyLo defined
+# No DutyHi defined
+# No Phase defined
+$U0.M0.testbench.clk.VirtualFrequency = 1;
+$U0.M0.testbench.clk.GroupName = "myGroup";
+$U0.M0.testbench.clk.Tolerance = "no";
+
+
+######## User clocks file declaration ########
+# This allows you to define clocks parameters in separate files
+# Note : Your design clocks are (possible labels for "my_clock") :
+#     -0- testbench.clk 
+# $U0.M0.my_clock.File = "my_clock_file";
+
+######## Propagation delay declaration ########
+# This allows you to synchronize all DUT clocks mapped into FK
+# Note : 0 <= FKpropagationDelay <= 15
+# $FKpropagationDelay = 0;
+
+############################################
+################# MEMORIES #################
+############################################
+
+######## Initialization memory file declaration ########
+$memoryInitDB = "memory.init";
+# $zrmTransactionalMode = #0/1;
+
+######## Memories Frequency declaration in kHz ########
+# $ddr2.frequency = #value;
+# $ssram.frequency = #value;
+# $rldram.frequency = #value;
+# $ddr2Trace.frequency = #value;
+
+############################################
+################# REGISTERS #################
+############################################
+
+######## Initialization register file declaration ########
+# $registerInitDB = "my_file";
+
+############################################
+################# PLUSARGS #################
+############################################
+
+######## Initialization plusargs file declaration ########
+# $plusargs_file = "my_file";
+
+###########################################
+########### rtlClock Tolerance ###########
+###########################################
+# $rtlClockToleranceValue = 0;
+

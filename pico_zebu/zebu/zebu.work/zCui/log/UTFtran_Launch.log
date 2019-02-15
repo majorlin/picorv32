@@ -1,0 +1,71 @@
+==============
+UTF Translator
+==============
+ZCUI Lib TCL: /run/pkg/synopsys-vcs_mx-/M-2017.03-SP2-10-Z/etc/unizfe/utf/lib_zCui.tcl
+ZCUI Post-process TCL: /run/pkg/synopsys-vcs_mx-/M-2017.03-SP2-10-Z/etc/unizfe/utf/post_zCui.tcl
+ZCUI_lib.tcl: Processing UTF command 'timing_analysis'
+ZCUI_lib.tcl: Processing UTF command 'VcsCommand'
+ZCUI_lib.tcl: Processing UTF command 'ArchitectureFile'
+ZCUI_lib.tcl: Processing UTF command 'GridCmd'
+xtors: Processing option '-use_zebu_ip_root'
+================================================
+ZCUI_post.ucf: Checking ZCUI mandatory commands
+================================================
+========================================================
+post_zCui.tcl: Dumping ZCUI commands. Total commands: 49.
+========================================================
+ZCUI {UNIFIED_COMPILE} {1.0}
+ZCUI_set AutoCoreDefinition f
+ZCUI_set TopReuseExistingMapping f
+ZCUI_set CorePartitioningMode Dop
+ZCUI_set DopCoreAdaptativeFR t
+ZCUI_set CoreReuseExistingMapping f
+ZCUI_set GlobalSkewOffset t
+ZCUI_set ClockPathLocalization FPGALevel
+ZCUI_set FilterGlitches On
+ZCUI_set ClockCounterFlag t
+ZCUI_set ZparIncrementalMode f
+ZCUI_set ZparRoutingEffortMode Medium
+ZCUI_set UseFpgaLocalDiskCompilation f
+ZCUI_set UseFpgaMultiLaunch f
+ZCUI_set UseParffMultiStage f
+ZCUI_set ISEFirstPARPolicy Original
+ZCUI_set ISEFilePolicy Compress
+ZCUI_set GlobalBramRWFlag f
+ZCUI_set TopDebugFlag t
+ZCUI_set DiskAccesOptimizerMethod {1}
+ZCUI_set MaximumNumberOfExistPRetry {30}
+ZCUI_set ExistPRetryDelay {1000}
+ZCUI_set MemoryIOAccessibilityFlag t
+ZCUI_set UseOfflineDebugFlag f
+ZCUI_set UseCSAFlag f
+ZCUI_set UseZebuIpRoot t
+ZCUI_set AutoCoreTimingOptimizationMode {No}
+ZCUI_set ZTopBuildCommandFilename {zebu.work/utf_generatefiles/zTopBuild_config.tcl}
+ZCUI_set ZTopBuildNetlistFinalizationFileName {zebu.work/utf_generatefiles/zTopBuild_netlist_config.tcl}
+ZCUI_set ZParCommandFilename {zebu.work/utf_generatefiles/zPar_config.tcl}
+ZCUI_set ZTimeInputCommandFilename {zebu.work/utf_generatefiles/zTime_config.tcl}
+ZCUI_set PBuildCommandFileName {zebu.work/utf_generatefiles/pBuild_config.tcl}
+ZCUI_set ZFpgaTimingCommandFilename {zebu.work/utf_generatefiles/zFpgaTiming_config.tcl}
+ZCUI_set SkewOffsetSynchronous t
+ZCUI_set SkewOffsetDelay 1
+ZCUI_set FilterGlitchDetectClockDelay f
+ZCUI_set DirectRouteClock f
+ZCUI_set MemoryRamlutToBramThreshold {11}
+ZCUI_set MemoryMaximumNumberOfRamlutBlocks {32000}
+ZCUI_set MemoryMaximumNumberOfBramBlocks {300}
+ZCUI_set ClockCounterFlag f
+ZCUI_set MemoryUserFile {zebu.work/utf_generatefiles/zMem_config.tcl}
+ZCUI_set ProfiledCompilation t
+ZCUI_set VcsCommand { vcs -full64   -sverilog  -hw_top=testbench +libext+.v +define+$IFLESS  -y $ZEBU_IP_ROOT/uc_xtor  -y $ZEBU_IP_ROOT/ZSPIFLASH/W25Q/128Mb/component  $ZEBU_IP_ROOT/HW_IP/ZSPIFLASH/W25Q/128Mb/edif/zspiflash_W25Q_128Mb.edf  ../src/picosoc/zebu_tb.v  ../src/picosoc/fpga_pin_model.v  ../src/picosoc/hx8kdemo.v  ../src/picosoc/picosoc.v  ../src/picosoc/picorv32.v  ../src/picosoc/simpleuart.v  ../src/picosoc/spiflash.v  ../src/picosoc/spimemio.v }
+ZCUI_set ArchitectureFile {./zse_configuration.tcl}
+ZCUI_add -jobQueue {ZebuSynthesis} {} {} {7}
+ZCUI_add -jobQueue {ZebuIse} {} {} {20}
+ZCUI_add -jobQueue {DEFAULT_QUEUE} {} {} {1}
+ZCUI_add -jobQueue {Zebu} {} {} {0}
+========================================================
+post_zTopClustering.tcl: Dumping zTopClustering commands. Total commands: 0.
+========================================================
+Ignore output extra files: 0
+Info: Tcl files parsed successfully
+command exit code is '0'
