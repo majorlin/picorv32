@@ -29,6 +29,7 @@ module testbench;
 	initial begin
 		$dumpfile("testbench.vcd");
 		$dumpvars(0, testbench);
+        $readmemh("rom_fw.hex", testbench.uut.memory.mem);
 
 		repeat (1) begin
 			repeat (50000) @(posedge clk);

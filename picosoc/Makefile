@@ -1,6 +1,6 @@
 
 # ---- RAM SIM ----
-picoram: picoram_tb.vvp picoram_fw.hex
+picoram: picoram_tb.vvp picoram_fw.hex rom_fw.hex
 	vvp -N $< +firmware=picoram_fw.hex
 
 picoram_tb.vvp: picoram_tb.v picoram.v  simpleuart.v ../picorv32.v 
@@ -16,6 +16,9 @@ picoram_fw.hex: picoram_fw.elf
 
 picoram_fw.bin: picoram_fw.elf
 	riscv32-unknown-elf-objcopy -O binary picoram_fw.elf picoram_fw.bin
+
+rom_fw.hex: picoram_fw.hex
+	python ../scripts/romload/hex8tohex32.py picoram_fw.hex > rom_fw.hex
 
 # ---- iCE40 HX8K Breakout Board ----
 
