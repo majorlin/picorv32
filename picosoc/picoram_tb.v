@@ -21,6 +21,7 @@
 
 module testbench;
 	reg clk;
+    reg reset_n;
 	always #5 clk = (clk === 1'b0);
 
 	localparam ser_half_period = 53;
@@ -30,6 +31,9 @@ module testbench;
 		$dumpfile("testbench.vcd");
 		$dumpvars(0, testbench);
         $readmemh("rom_fw.hex", testbench.uut.memory.mem);
+        reset_n = 0;
+        #16;
+        reset_n = 1;
 
 		repeat (1) begin
 			repeat (50000) @(posedge clk);
@@ -56,6 +60,7 @@ module testbench;
 
 	picoram uut (
 		.clk      (clk      ),
+		.reset_n  (reset_n  ),
 		.irq_5        (1'b0        ),
 		.irq_6        (1'b0        ),
 		.irq_7        (1'b0        ),
