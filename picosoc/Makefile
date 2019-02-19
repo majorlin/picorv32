@@ -3,7 +3,7 @@
 picoram: picoram_tb.vvp picoram_fw.hex rom_fw.hex
 	vvp -N $< +firmware=picoram_fw.hex
 
-picoram_tb.vvp: picoram_tb.v picoram.v  simpleuart.v ../picorv32.v 
+picoram_tb.vvp: ../picorv32.v picoram.v  simpleuart.v  picoram_tb.v picosoc_mem.v
 #picoram_tb.vvp: picoram_tb.v picoram.v  simpleuart.v picosoc.v ../picorv32.v spimemio.v spiflash.v fpga_pin_model.v
 	iverilog -s testbench -o $@ $^ 
 
