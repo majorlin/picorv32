@@ -1,0 +1,5 @@
+$U0.M0.testbench.clk.Waveform = "_-";
+$U0.M0.testbench.clk.VirtualFrequency = 1;
+
+$nbProcess = 1;
+$process_0 = "uart";

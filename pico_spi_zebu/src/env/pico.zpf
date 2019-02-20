@@ -1,0 +1,72 @@
+##---------------------------------------------------------------------  
+## COPYRIGHT (C) 2018 SYNOPSYS INC.       
+## This software and the associated documentation are confidential and   
+## proprietary to Synopsys, Inc. Your use or disclosure of this software 
+## is subject to the terms and conditions of a written license agreement 
+## between you, or your company, and Synopsys, Inc. In the event of      
+## publications, the following notice is applicable:                     
+##                                                                       
+## ALL RIGHTS RESERVED                                                   
+##                                                                       
+## The entire notice above must be reproduced on all authorized copies.  
+##---------------------------------------------------------------------- 
+
+
+ZEBU_UI ZCUI {1.0}
+#==========================================================================
+## Global
+#==========================================================================
+ZCUI_set ZebuWorkingDirectory $env(ZEBUWORK)
+#==========================================================================
+## Design sources
+#==========================================================================
+ZCUI_add -rtlGroup {dut} "$env(SYNTH_TOOLS)" {dut} {}
+ZCUI_add -rtlSource {dut} {../../picosoc/picosoc.v} {} -language verilog
+ZCUI_add -rtlSource {dut} {../../picosoc/hx8kdemo.v} {} -language verilog
+ZCUI_add -rtlSource {dut} {../../picorv32.v} {} -language verilog
+ZCUI_add -rtlSource {dut} {../src/picosoc/simpleuart.v} {} -language verilog
+ZCUI_add -rtlSource {dut} {../src/picosoc/spimemio.v} {} -language verilog
+ZCUI_set TopLevel {dut}
+#ZCUI_add -edif {../src/dut/dut.edf}
+
+#--------------------------------------------------------------------------
+## Default Back-End : Architecture
+ZCUI_set ArchitectureFile $env(FILE_CONF)
+#--------------------------------------------------------------------------
+## Default Back-End : Environnement
+ZCUI_set DVEFileName {../src/env/pico_driver.dve}
+ZCUI_set GeneratorType CPP
+ZCUI_set UseZebuIpRoot t
+#--------------------------------------------------------------------------
+## Default Back-End : Mapping
+#ZCUI_set ClusterAuto f
+#ZCUI_set ClusterAutoInitialization hierarchical
+#ZCUI_set ClusterAutoNumberOfFpga 0
+#ZCUI_set ClusterAutoDspFillRate 100
+#ZCUI_set ClusterAutoBramFillRate 100
+#ZCUI_set ClusterAutoLutFillRate 70
+#ZCUI_set ClusterAutoRegisterFillRate 25
+#ZCUI_set ClusterAutoTimeOut 90
+#--------------------------------------------------------------------------
+## Default Back-End : Clock Constraints
+ZCUI_set GlobalSkewOffset t
+ZCUI_set LocalizeClockTree t
+ZCUI_set FilterGlitches On
+ZCUI_set ClockCounterFlag t
+
+#--------------------------------------------------------------------------
+## Default Back-End : ISE Parameters
+#ZCUI_add -ISEThresholdMode automatic
+#==========================================================================
+## Compiler Options
+#==========================================================================
+ZCUI_set PreRunCommand  $env(REMOTECMD)
+ZCUI_set PreRunISECommand $env(REMOTECMD)
+ZCUI_set MaxZebuJob 0
+ZCUI_set MaxIseJob 0
+ZCUI_add -staticRtlBundleMethod No
+ZCUI_set IgnoreChecksumFlag f
+ZCUI_add -sourcePathConverter Relative
+ZCUI_add -zebuPathConverter Relative
+ZCUI_set MaximumNumberOfExistPRetry {30}
+ZCUI_set ExistPRetryDelay {1000}

@@ -10,6 +10,7 @@
 /hx8kdemo_tb.vvp
 /hx8kdemo_fw.elf
 /hx8kdemo_fw.hex
+/hx8kdemo_fw.map
 /hx8kdemo_fw.bin
 /icebreaker.asc
 /icebreaker.bin

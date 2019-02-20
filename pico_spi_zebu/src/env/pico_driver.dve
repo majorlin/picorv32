@@ -1,0 +1,17 @@
+uart_driver uart_driver_0(
+  .TxD(RxD),
+  .RxD(TxD),
+  .save(save_0)
+);
+defparam uart_driver_0.clock_ctrl_0 = clk;
+
+zceiClockPort clockPort0(
+	.cclock(clk),
+	.cresetn(rstn)
+);
+
+
+assign led_keep[7:0] = leds;
+
+reg save_0;
+reg save_1;

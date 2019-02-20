@@ -1,0 +1,13 @@
+VcsCommand { vcs -full64  \
+             -sverilog \
+             -hw_top=uart_device_wrapper \
+             +libext+.v +define+$IFLESS \
+             -y $ZEBU_IP_ROOT/uc_xtor \
+             ../src/dut/uart_device_wrapper.v \
+             ../src/dut/dut.v }
+ArchitectureFile "$env(FILE_CONF)"
+GridCmd -submit $env(REMOTECMD) -delete {}
+xtors -use_zebu_ip_root t
+if {"$env(IFLESS)" eq "ZEBU_NO_RTB"} {
+encrypted_mod -encrypt_v2 true
+}

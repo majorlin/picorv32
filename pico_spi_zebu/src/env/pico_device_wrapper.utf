@@ -1,0 +1,29 @@
+VcsCommand { vcs -full64  \
+             -sverilog \
+             -hw_top=testbench\
+             +libext+.v +define+$IFLESS \
+             -y $ZEBU_IP_ROOT/uc_xtor \
+             ../src/pico_dut/zebu_tb.v \
+             ../../picosoc/picosoc.v \
+             ../../picosoc/picosoc_mem.v \
+             ../../picosoc/hx8kdemo.v \
+             ../../picosoc/spimemio.v \
+             ../../picorv32.v \
+             ../../picosoc/simpleuart.v  }
+ArchitectureFile "$env(FILE_CONF)"
+GridCmd -submit $env(REMOTECMD) -delete {}
+xtors -use_zebu_ip_root t
+if {"$env(IFLESS)" eq "ZEBU_NO_RTB"} {
+encrypted_mod -encrypt_v2 true
+}
+##### Memory Config #####
+#memories -zmem_scripts ../src/picosoc_mem.tcl
+optimization -no
+set_hwtop           -module             testbench
+use_vcs_verdi_flow  -enabled            true
+csa                 -generate_header    true
+#debug               -use_offline_debug  true
+debug               -verdi_db           true 
+xtors               -use_zebu_ip_root   true
+design              -convert_strength   true
+environment         -generate_wrapper   CPP

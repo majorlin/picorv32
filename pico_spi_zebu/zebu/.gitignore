@@ -1,0 +1,11 @@
+rundir/
+tools
+zcui.work
+zebu.work/
+*.help
+*.log
+*.fsdb
+novas.rc
+novas.conf
+nWaveLog/
+zRun_cmds.tcl
