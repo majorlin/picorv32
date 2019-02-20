@@ -1,3 +1,4 @@
+`timescale 1 ns / 1 ps
 module picosoc_mem #(
 	parameter integer WORDS = 256
 ) (

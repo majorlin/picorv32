@@ -17,6 +17,7 @@
  *
  */
 
+`timescale 1 ns / 1 ps
 module simpleuart (
 	input clk,
 	input resetn,

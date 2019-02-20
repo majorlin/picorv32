@@ -17,6 +17,7 @@
  *
  */
 
+`timescale 1 ns / 1 ps
 module spimemio (
 	input clk, resetn,
 
