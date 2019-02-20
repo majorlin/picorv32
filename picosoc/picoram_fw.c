@@ -556,10 +556,7 @@ void main()
 {
 	reg_leds = 31;
 	reg_uart_clkdiv = 104;
-    while(1){
-	    print("Booting..\n");
-        reg_leds ++;
-    }
+    print("Booting..\n");
 
 	reg_leds = 63;
 	// set_flash_qspi_flag();
