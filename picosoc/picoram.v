@@ -47,7 +47,8 @@ module picoram (
 	wire irq_uart = 0;
 
 	reg [5:0] reset_cnt = 0;
-	wire resetn = &reset_n;
+	//wire resetn = &reset_cnt;
+    wire resetn = reset_n;
 
 	always @(posedge clk) begin
 		reset_cnt <= reset_cnt + !resetn;

@@ -159,9 +159,9 @@ int main (int argc, char *argv[]) {
       // Config UART interface
       ok =  uarts[i]->setWidth(8);
       ok &= uarts[i]->setParity(NoParity);
-      ok &= uarts[i]->setStopBit(TwoStopBit);
-      ok &= uarts[i]->setStopBit(TwoBitStop);
-      ok &= uarts[i]->setRatio(16);
+      ok &= uarts[i]->setStopBit(OneStopBit);
+      ok &= uarts[i]->setStopBit(OneBitStop);
+      ok &= uarts[i]->setRatio(106);
       ok &= uarts[i]->config(); 
 
       if (ok) {

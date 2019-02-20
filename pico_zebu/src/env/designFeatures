@@ -88,7 +88,7 @@ $U0.M0.testbench.clk.Tolerance = "no";
 ############################################
 
 ######## Initialization memory file declaration ########
-#$memoryInitDB = "memory.init";
+$memoryInitDB = "memory.init";
 # $zrmTransactionalMode = #0/1;
 
 ######## Memories Frequency declaration in kHz ########

@@ -5,6 +5,7 @@ VcsCommand { vcs -full64  \
              -y $ZEBU_IP_ROOT/uc_xtor \
              ../src/pico_dut/zebu_tb.v \
              ../../picosoc/picoram.v \
+             ../../picosoc/picosoc_mem.v \
              ../../picorv32.v \
              ../../picosoc/simpleuart.v  }
 ArchitectureFile "$env(FILE_CONF)"
@@ -13,3 +14,14 @@ xtors -use_zebu_ip_root t
 if {"$env(IFLESS)" eq "ZEBU_NO_RTB"} {
 encrypted_mod -encrypt_v2 true
 }
+##### Memory Config #####
+#memories -zmem_scripts ../src/picosoc_mem.tcl
+optimization -no
+set_hwtop           -module             testbench
+use_vcs_verdi_flow  -enabled            true
+csa                 -generate_header    true
+#debug               -use_offline_debug  true
+debug               -verdi_db           true 
+xtors               -use_zebu_ip_root   true
+design              -convert_strength   true
+environment         -generate_wrapper   CPP
