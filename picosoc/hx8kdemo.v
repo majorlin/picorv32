@@ -17,6 +17,7 @@
  *
  */
 
+`timescale 1 ns / 1 ps
 module hx8kdemo (
 	input clk,
 
@@ -64,10 +65,10 @@ module hx8kdemo (
 		.D_IN_0({flash_io3_di, flash_io2_di, flash_io1_di, flash_io0_di})
 	);
 */
-    fpga_pin_model io3(.doe(flash_io3_oe), .do(flash_io3_do), .ind(flash_io3_di), .pin(flash_io3));
-    fpga_pin_model io2(.doe(flash_io2_oe), .do(flash_io2_do), .ind(flash_io2_di), .pin(flash_io2));
-    fpga_pin_model io1(.doe(flash_io1_oe), .do(flash_io1_do), .ind(flash_io1_di), .pin(flash_io1));
-    fpga_pin_model io0(.doe(flash_io0_oe), .do(flash_io0_do), .ind(flash_io0_di), .pin(flash_io0));
+    fpga_pin_model io3(.doe(flash_io3_oe), .pdo(flash_io3_do), .ind(flash_io3_di), .pin(flash_io3));
+    fpga_pin_model io2(.doe(flash_io2_oe), .pdo(flash_io2_do), .ind(flash_io2_di), .pin(flash_io2));
+    fpga_pin_model io1(.doe(flash_io1_oe), .pdo(flash_io1_do), .ind(flash_io1_di), .pin(flash_io1));
+    fpga_pin_model io0(.doe(flash_io0_oe), .pdo(flash_io0_do), .ind(flash_io0_di), .pin(flash_io0));
 
 	wire        iomem_valid;
 	reg         iomem_ready;

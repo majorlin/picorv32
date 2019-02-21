@@ -1,3 +1,4 @@
+`timescale 1 ns / 1 ps
 module picosoc_regs (
 	input clk, wen,
 	input [5:0] waddr,

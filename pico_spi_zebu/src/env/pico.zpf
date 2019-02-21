@@ -23,6 +23,7 @@ ZCUI_set ZebuWorkingDirectory $env(ZEBUWORK)
 ZCUI_add -rtlGroup {dut} "$env(SYNTH_TOOLS)" {dut} {}
 ZCUI_add -rtlSource {dut} {../../picosoc/picosoc.v} {} -language verilog
 ZCUI_add -rtlSource {dut} {../../picosoc/hx8kdemo.v} {} -language verilog
+ZCUI_add -rtlSource {dut} {../../picosoc/fpga_pin_model.v} {} -language verilog
 ZCUI_add -rtlSource {dut} {../../picorv32.v} {} -language verilog
 ZCUI_add -rtlSource {dut} {../src/picosoc/simpleuart.v} {} -language verilog
 ZCUI_add -rtlSource {dut} {../src/picosoc/spimemio.v} {} -language verilog

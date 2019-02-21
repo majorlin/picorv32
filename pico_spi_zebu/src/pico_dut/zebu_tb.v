@@ -63,13 +63,14 @@ module testbench;
 		.flash_io3(flash_io3)
 	);
 
-	spiflash spiflash (
-		.csb(flash_csb),
-		.clk(flash_clk),
-		.io0(flash_io0),
-		.io1(flash_io1),
-		.io2(flash_io2),
-		.io3(flash_io3)
+	zspiflash_W25Q_128Mb_unidir spiflash (
+		.spi_ncs(flash_csb),
+		.spi_clk(flash_clk),
+		.spi_di_io0(flash_io0),
+		.spi_do_io1(flash_io1),
+		.spi_nwp_io2(flash_io2),
+		.spi_nhold_io3(flash_io3),
+        .zebu_clk(clk)
 	);
 
 
