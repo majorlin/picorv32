@@ -16,7 +16,7 @@
  *  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *
  */
-
+/*
 `ifndef PICORV32_REGS
 `ifdef PICORV32_V
 `error "picosoc.v must be read before picorv32.v!"
@@ -24,7 +24,7 @@
 
 `define PICORV32_REGS picosoc_regs
 `endif
-
+*/
 module picosoc (
 	input clk,
 	input resetn,

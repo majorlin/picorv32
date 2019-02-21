@@ -448,13 +448,13 @@ module spimemio_xfer (
 	always @* begin
 		flash_io0_oe = 0;
 		flash_io1_oe = 0;
-		flash_io2_oe = 0;
-		flash_io3_oe = 0;
+		flash_io2_oe = 1;
+		flash_io3_oe = 1;
 
 		flash_io0_do = 0;
 		flash_io1_do = 0;
 		flash_io2_do = 0;
-		flash_io3_do = 0;
+		flash_io3_do = 1;
 
 		next_obuffer = obuffer;
 		next_ibuffer = ibuffer;
