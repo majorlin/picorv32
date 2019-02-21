@@ -555,7 +555,7 @@ void cmd_benchmark_all()
 void main()
 {
 	reg_leds = 31;
-	reg_uart_clkdiv = 104;
+	reg_uart_clkdiv = 4;
 	print("Booting..\n");
 
 	reg_leds = 63;
