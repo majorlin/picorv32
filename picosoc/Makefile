@@ -31,7 +31,7 @@ hx8ksynsim: hx8kdemo_syn_tb.vvp hx8kdemo_fw.hex
 hx8kdemo.blif: hx8kdemo.v spimemio.v simpleuart.v picosoc.v ../picorv32.v
 	yosys -ql hx8kdemo.log -p 'synth_ice40 -top hx8kdemo -blif hx8kdemo.blif' $^
 
-hx8kdemo_tb.vvp: hx8kdemo_tb.v hx8kdemo.v spimemio.v simpleuart.v picosoc.v ../picorv32.v spiflash.v fpga_pin_model.v
+hx8kdemo_tb.vvp: hx8kdemo_tb.v hx8kdemo.v spimemio.v simpleuart.v picosoc.v ../picorv32.v spiflash.v fpga_pin_model.v picosoc_mem.v
 	#iverilog -s testbench -o $@ $^ `yosys-config --datdir/ice40/cells_sim.v`
 	iverilog -s testbench -o $@ $^ 
 
