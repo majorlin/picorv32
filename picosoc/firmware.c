@@ -562,7 +562,7 @@ void main()
 	// set_flash_qspi_flag();
 
 	reg_leds = 127;
-	while (getchar_prompt("Press ENTER to continue..\n") != '\r') { /* wait */ }
+	//while (getchar_prompt("Press ENTER to continue..\n") != '\r') { /* wait */ }
 
 	print("\n");
 	print("  ____  _          ____         ____\n");
