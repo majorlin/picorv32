@@ -136,7 +136,7 @@ module picorom (
 		.valid  (mem_valid && mem_addr >= 4*MEM_WORDS && mem_addr < 32'h 0200_0000),
 		//.ready  (spimem_ready),
 		//.addr   (mem_addr[23:0]),
-		.addr   (mem_addr[19:2]),
+		.addr   (mem_addr[13:2]),
 		.rdata  (spimem_rdata)
 
 		// .cfgreg_we(spimemio_cfgreg_sel ? mem_wstrb : 4'b 0000),

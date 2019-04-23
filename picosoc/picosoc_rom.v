@@ -5,7 +5,7 @@ module picosoc_rom #(
 	input clk, resetn,
 	input valid,
 	output ready,
-	input [17:0] addr,
+	input [11:0] addr,
 	output reg [31:0] rdata
 );
 	reg [31:0] mem [0:WORDS-1] /* synthesis syn_ramstyle="block_ram" */;
