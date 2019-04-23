@@ -76,10 +76,10 @@ module picorom (
 	wire [3:0] mem_wstrb;
 	wire [31:0] mem_rdata;
 
-	wire spimem_ready;
 	wire [31:0] spimem_rdata;
 
 	reg ram_ready;
+	reg spimem_ready;
 	wire [31:0] ram_rdata;
 
 	assign iomem_valid = mem_valid && (mem_addr[31:24] > 8'h 01);
@@ -128,12 +128,15 @@ module picorom (
 		.irq         (irq        )
 	);
 
+	always @(posedge clk)
+		spimem_ready <= mem_valid && !mem_ready && mem_addr >= 4*MEM_WORDS && mem_addr < 32'h 0200_0000;
 	picosoc_rom rom(
 		.clk    (clk),
 		.resetn (resetn),
 		.valid  (mem_valid && mem_addr >= 4*MEM_WORDS && mem_addr < 32'h 0200_0000),
-		.ready  (spimem_ready),
-		.addr   (mem_addr[23:0]),
+		//.ready  (spimem_ready),
+		//.addr   (mem_addr[23:0]),
+		.addr   (mem_addr[19:2]),
 		.rdata  (spimem_rdata)
 
 		// .cfgreg_we(spimemio_cfgreg_sel ? mem_wstrb : 4'b 0000),

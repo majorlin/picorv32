@@ -27,7 +27,7 @@ module testbench;
 	event ser_sample;
 
 	initial begin
-		$dumpfile("testbench.vcd");
+		$dumpfile("hx8k.vcd");
 		$dumpvars(0, testbench);
 
 		repeat (60) begin

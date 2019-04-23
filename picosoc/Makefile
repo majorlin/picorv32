@@ -18,7 +18,7 @@ picoram_fw.elf: sections.lds start.s picoram_fw.c
 	riscv32-unknown-elf-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_ram.lds,--strip-debug -ffreestanding -nostdlib -o picoram_fw.elf start.s picoram_fw.c
 
 picorom_fw.elf: sections_rom.lds start.s picorom_fw.c
-	riscv32-unknown-elf-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_ram.lds,--strip-debug -ffreestanding -nostdlib -o picorom_fw.elf start.s picorom_fw.c
+	riscv32-unknown-elf-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_rom.lds,--strip-debug -ffreestanding -nostdlib -o picorom_fw.elf start.s picorom_fw.c
 
 picoram_fw.hex: picoram_fw.elf
 	riscv32-unknown-elf-objcopy -O verilog picoram_fw.elf picoram_fw.hex
@@ -144,15 +144,15 @@ cmos.log: spimemio.v simpleuart.v picosoc.v ../picorv32.v
 # ---- Clean ----
 
 clean:
-	rm -f testbench.vvp testbench.vcd spiflash_tb.vvp spiflash_tb.vcd
+	rm -f testbench.vvp testbench.vcd testbench_ram.vcd spiflash_tb.vvp spiflash_tb.vcd
 	rm -f hx8kdemo_fw.elf hx8kdemo_fw.hex hx8kdemo_fw.map hx8kdemo_fw.bin cmos.log
 	rm -f picoram_fw.elf picoram_fw.hex picoram_fw.map picoram_fw.bin cmos.log
-	rm -f picorom_fw.elf picorom_fw.hex picorom_fw.map picorom_fw.bin cmos.log
+	rm -f picorom_fw.elf picorom_fw.hex picorom_fw.map picorom_fw.bin cmos.log rom_fw.hex
 	rm -f icebreaker_fw.elf icebreaker_fw.hex icebreaker_fw.bin
 	rm -f hx8kdemo.blif hx8kdemo.log hx8kdemo.asc hx8kdemo.rpt hx8kdemo.bin
 	rm -f hx8kdemo_syn.v hx8kdemo_syn_tb.vvp hx8kdemo_tb.vvp picoram_tb.vvp
 	rm -f icebreaker.json icebreaker.log icebreaker.asc icebreaker.rpt icebreaker.bin
-	rm -f icebreaker_syn.v icebreaker_syn_tb.vvp icebreaker_tb.vvp
+	rm -f icebreaker_syn.v icebreaker_syn_tb.vvp icebreaker_tb.vvp picorom_tb.vvp
 
 .PHONY: spiflash_tb clean
 .PHONY: hx8kprog hx8kprog_fw hx8ksim hx8ksynsim

@@ -28,7 +28,7 @@ module testbench;
 	event ser_sample;
 
 	initial begin
-		$dumpfile("testbench.vcd");
+		$dumpfile("testbench_ram.vcd");
 		$dumpvars(0, testbench);
         $readmemh("rom_fw.hex", testbench.uut.memory.mem);
         reset_n = 0;
