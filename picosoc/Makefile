@@ -1,24 +1,44 @@
 
 # ---- RAM SIM ----
-picoram: picoram_tb.vvp picoram_fw.hex rom_fw.hex
+picoram: picoram_tb.vvp picoram_fw.hex ram_fw.hex
+	vvp -N $< +firmware=picoram_fw.hex
+
+picorom: picorom_tb.vvp picorom_fw.hex rom_fw.hex
 	vvp -N $< +firmware=picoram_fw.hex
 
 picoram_tb.vvp: ../picorv32.v picoram.v  simpleuart.v  picoram_tb.v picosoc_mem.v
 #picoram_tb.vvp: picoram_tb.v picoram.v  simpleuart.v picosoc.v ../picorv32.v spimemio.v spiflash.v fpga_pin_model.v
 	iverilog -s testbench -o $@ $^ 
 
+picorom_tb.vvp: ../picorv32.v rom_top.v picorom.v  simpleuart.v  picorom_tb.v picosoc_rom.v picosoc_mem.v
+#picoram_tb.vvp: picoram_tb.v picoram.v  simpleuart.v picosoc.v ../picorv32.v spimemio.v spiflash.v fpga_pin_model.v
+	iverilog -s testbench -o $@ $^ 
+
 picoram_fw.elf: sections.lds start.s picoram_fw.c
 	riscv32-unknown-elf-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_ram.lds,--strip-debug -ffreestanding -nostdlib -o picoram_fw.elf start.s picoram_fw.c
+
+picorom_fw.elf: sections_rom.lds start.s picorom_fw.c
+	riscv32-unknown-elf-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_ram.lds,--strip-debug -ffreestanding -nostdlib -o picorom_fw.elf start.s picorom_fw.c
 
 picoram_fw.hex: picoram_fw.elf
 	riscv32-unknown-elf-objcopy -O verilog picoram_fw.elf picoram_fw.hex
 	riscv32-unknown-elf-objdump -h -D -t picoram_fw.elf > picoram_fw.map
 
+picorom_fw.hex: picorom_fw.elf
+	riscv32-unknown-elf-objcopy -O verilog picorom_fw.elf picorom_fw.hex
+	riscv32-unknown-elf-objdump -h -D -t picorom_fw.elf > picorom_fw.map
+
 picoram_fw.bin: picoram_fw.elf
 	riscv32-unknown-elf-objcopy -O binary picoram_fw.elf picoram_fw.bin
 
-rom_fw.hex: picoram_fw.hex
+picorom_fw.bin: picorom_fw.elf
+	riscv32-unknown-elf-objcopy -O binary picorom_fw.elf picorom_fw.bin
+
+ram_fw.hex: picoram_fw.hex
 	python ../scripts/romload/hex8tohex32.py picoram_fw.hex > rom_fw.hex
+
+rom_fw.hex: picorom_fw.hex
+	python ../scripts/romload/hex8tohex32.py picorom_fw.hex > rom_fw.hex
 
 # ---- iCE40 HX8K Breakout Board ----
 
@@ -127,6 +147,7 @@ clean:
 	rm -f testbench.vvp testbench.vcd spiflash_tb.vvp spiflash_tb.vcd
 	rm -f hx8kdemo_fw.elf hx8kdemo_fw.hex hx8kdemo_fw.map hx8kdemo_fw.bin cmos.log
 	rm -f picoram_fw.elf picoram_fw.hex picoram_fw.map picoram_fw.bin cmos.log
+	rm -f picorom_fw.elf picorom_fw.hex picorom_fw.map picorom_fw.bin cmos.log
 	rm -f icebreaker_fw.elf icebreaker_fw.hex icebreaker_fw.bin
 	rm -f hx8kdemo.blif hx8kdemo.log hx8kdemo.asc hx8kdemo.rpt hx8kdemo.bin
 	rm -f hx8kdemo_syn.v hx8kdemo_syn_tb.vvp hx8kdemo_tb.vvp picoram_tb.vvp

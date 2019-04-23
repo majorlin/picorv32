@@ -30,7 +30,7 @@ module testbench;
 	initial begin
 		$dumpfile("testbench.vcd");
 		$dumpvars(0, testbench);
-        $readmemh("rom_fw.hex", testbench.uut.memory.mem);
+        $readmemh("rom_fw.hex", testbench.uut.soc.rom.mem);
         reset_n = 0;
         #16;
         reset_n = 1;
@@ -58,12 +58,9 @@ module testbench;
 		#1 $display("%b @ %d", leds, $time);
 	end
 
-	picoram uut (
+	rom_top uut (
 		.clk      (clk      ),
-		.reset_n  (reset_n  ),
-		.irq_5        (1'b0        ),
-		.irq_6        (1'b0        ),
-		.irq_7        (1'b0        ),
+		.resetn  (reset_n  ),
 
 		.leds     (leds     ),
 		.ser_rx   (ser_rx   ),

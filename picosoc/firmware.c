@@ -562,6 +562,10 @@ void main()
     // set_flash_qspi_flag();
 
     reg_leds = 127;
+    while(1){
+        for (int i = 0; i < 0xff; i ++);
+        reg_leds ++;
+    }
 
 
     print("\n");

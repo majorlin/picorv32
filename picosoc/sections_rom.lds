@@ -1,6 +1,6 @@
 MEMORY
 {
-    FLASH (rx)      : ORIGIN = 0x00000400, LENGTH = 15K /* entire flash, 4 MiB */
+    FLASH (rx)      : ORIGIN = 0x00000400, LENGTH = 16K /* entire flash, 4 MiB */
     RAM (xrw)       : ORIGIN = 0x00000000, LENGTH = 0x000400 /* 1 KB */
 }
 

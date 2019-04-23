@@ -26,7 +26,12 @@
 /testbench.vcd
 /cmos.log
 picoram_fw.hex
+picorom_fw.hex
+ram_fw.hex
 rom_fw.hex
 picoram_fw.map
 picoram_tb.vvp
 picoram_fw.elf
+picorom_fw.map
+picorom_tb.vvp
+picorom_fw.elf

@@ -16,20 +16,33 @@
  *  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *
  */
+/*
+`ifndef PICORV32_REGS
+`ifdef PICORV32_V
+`error "picosoc.v must be read before picorv32.v!"
+`endif
 
-
-module picoram (
+`define PICORV32_REGS picosoc_regs
+`endif
+*/
+module picorom (
 	input clk,
-	input reset_n,
+	input resetn,
+
+	output        iomem_valid,
+	input         iomem_ready,
+	output [ 3:0] iomem_wstrb,
+	output [31:0] iomem_addr,
+	output [31:0] iomem_wdata,
+	input  [31:0] iomem_rdata,
 
 	input  irq_5,
 	input  irq_6,
 	input  irq_7,
 
 	output ser_tx,
-	input  ser_rx,
+	input  ser_rx
 
-	output [7:0] leds
 );
 	parameter [0:0] BARREL_SHIFTER = 1;
 	parameter [0:0] ENABLE_MULDIV = 1;
@@ -37,22 +50,14 @@ module picoram (
 	parameter [0:0] ENABLE_COUNTERS = 1;
 	parameter [0:0] ENABLE_IRQ_QREGS = 0;
 
-	parameter integer MEM_WORDS = 15 * 256;
-	parameter [31:0] STACKADDR = (4*256);       // end of memory
-	parameter [31:0] PROGADDR_RESET = 32'h 0000_0400; // 1K RAM
+	parameter integer MEM_WORDS = 256;
+	parameter [31:0] STACKADDR = (4*MEM_WORDS);       // end of memory
+	parameter [31:0] PROGADDR_RESET = 32'h 0010_0000; // 1 MB into flash
 	parameter [31:0] PROGADDR_IRQ = 32'h 0000_0000;
 
 	reg [31:0] irq;
 	wire irq_stall = 0;
 	wire irq_uart = 0;
-
-	reg [5:0] reset_cnt = 0;
-	//wire resetn = &reset_cnt;
-    wire resetn = reset_n;
-
-	always @(posedge clk) begin
-		reset_cnt <= reset_cnt + !resetn;
-	end
 
 	always @* begin
 		irq = 0;
@@ -71,18 +76,19 @@ module picoram (
 	wire [3:0] mem_wstrb;
 	wire [31:0] mem_rdata;
 
-	wire        iomem_valid;
-	reg         iomem_ready;
-	wire [3:0]  iomem_wstrb;
-	wire [31:0] iomem_addr;
-	wire [31:0] iomem_wdata;
-	reg  [31:0] iomem_rdata;
-
 	wire spimem_ready;
 	wire [31:0] spimem_rdata;
 
 	reg ram_ready;
 	wire [31:0] ram_rdata;
+
+	assign iomem_valid = mem_valid && (mem_addr[31:24] > 8'h 01);
+	assign iomem_wstrb = mem_wstrb;
+	assign iomem_addr = mem_addr;
+	assign iomem_wdata = mem_wdata;
+
+	// wire spimemio_cfgreg_sel = mem_valid && (mem_addr == 32'h 0200_0000);
+	// wire [31:0] spimemio_cfgreg_do;
 
 	wire        simpleuart_reg_div_sel = mem_valid && (mem_addr == 32'h 0200_0004);
 	wire [31:0] simpleuart_reg_div_do;
@@ -91,36 +97,12 @@ module picoram (
 	wire [31:0] simpleuart_reg_dat_do;
 	wire        simpleuart_reg_dat_wait;
 
-	assign iomem_valid = mem_valid && (mem_addr[31:24] > 8'h 01);
-	assign iomem_wstrb = mem_wstrb;
-	assign iomem_addr = mem_addr;
-	assign iomem_wdata = mem_wdata;
-
-	assign mem_ready = (iomem_valid && iomem_ready) ||  ram_ready || 
+	assign mem_ready = (iomem_valid && iomem_ready) || spimem_ready || ram_ready || /* spimemio_cfgreg_sel || */
 			simpleuart_reg_div_sel || (simpleuart_reg_dat_sel && !simpleuart_reg_dat_wait);
 
-	assign mem_rdata = (iomem_valid && iomem_ready) ? iomem_rdata :  ram_ready ? ram_rdata :
-			 simpleuart_reg_div_sel ? simpleuart_reg_div_do : simpleuart_reg_dat_sel ? simpleuart_reg_dat_do : 32'h 0000_0000;
-
-
-	reg [31:0] gpio;
-	assign leds = gpio;
-
-	always @(posedge clk) begin
-		if (!resetn) begin
-			gpio <= 0;
-		end else begin
-			iomem_ready <= 0;
-			if (iomem_valid && !iomem_ready && iomem_addr[31:24] == 8'h 03) begin
-				iomem_ready <= 1;
-				iomem_rdata <= gpio;
-				if (iomem_wstrb[0]) gpio[ 7: 0] <= iomem_wdata[ 7: 0];
-				if (iomem_wstrb[1]) gpio[15: 8] <= iomem_wdata[15: 8];
-				if (iomem_wstrb[2]) gpio[23:16] <= iomem_wdata[23:16];
-				if (iomem_wstrb[3]) gpio[31:24] <= iomem_wdata[31:24];
-			end
-		end
-	end
+	assign mem_rdata = (iomem_valid && iomem_ready) ? iomem_rdata : spimem_ready ? spimem_rdata : ram_ready ? ram_rdata :
+			/*spimemio_cfgreg_sel ? spimemio_cfgreg_do : */ simpleuart_reg_div_sel ? simpleuart_reg_div_do :
+			simpleuart_reg_dat_sel ? simpleuart_reg_dat_do : 32'h 0000_0000;
 
 	picorv32 #(
 		.STACKADDR(STACKADDR),
@@ -144,6 +126,19 @@ module picoram (
 		.mem_wstrb   (mem_wstrb  ),
 		.mem_rdata   (mem_rdata  ),
 		.irq         (irq        )
+	);
+
+	picosoc_rom rom(
+		.clk    (clk),
+		.resetn (resetn),
+		.valid  (mem_valid && mem_addr >= 4*MEM_WORDS && mem_addr < 32'h 0200_0000),
+		.ready  (spimem_ready),
+		.addr   (mem_addr[23:0]),
+		.rdata  (spimem_rdata)
+
+		// .cfgreg_we(spimemio_cfgreg_sel ? mem_wstrb : 4'b 0000),
+		// .cfgreg_di(mem_wdata),
+		// .cfgreg_do(spimemio_cfgreg_do)
 	);
 
 	simpleuart simpleuart (
@@ -175,7 +170,4 @@ module picoram (
 		.rdata(ram_rdata)
 	);
 endmodule
-
-// Implementation note:
-// Replace the following two modules with wrappers for your SRAM cells.
 
