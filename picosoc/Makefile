@@ -26,7 +26,7 @@ picoram_fw.hex: picoram_fw.elf
 
 picorom_fw.hex: picorom_fw.elf
 	${TOOL_CHAIN_PREFIX}-objcopy -O verilog picorom_fw.elf picorom_fw.hex
-	riscv32-unknown-elf-objdump -h -D -t picorom_fw.elf > picorom_fw.map
+	${TOOL_CHAIN_PREFIX}-objdump -h -D -t picorom_fw.elf > picorom_fw.map
 
 picoram_fw.bin: picoram_fw.elf
 	${TOOL_CHAIN_PREFIX}-objcopy -O binary picoram_fw.elf picoram_fw.bin
