@@ -1,4 +1,4 @@
-
+TOOL_CHAIN_PREFIX="riscv-none-embed"
 # ---- RAM SIM ----
 picoram: picoram_tb.vvp picoram_fw.hex ram_fw.hex
 	vvp -N $< +firmware=picoram_fw.hex
@@ -15,24 +15,24 @@ picorom_tb.vvp: ../picorv32.v rom_top.v picorom.v  simpleuart.v  picorom_tb.v pi
 	iverilog -s testbench -o $@ $^ 
 
 picoram_fw.elf: sections.lds start.s picoram_fw.c
-	riscv32-unknown-elf-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_ram.lds,--strip-debug -ffreestanding -nostdlib -o picoram_fw.elf start.s picoram_fw.c
+	${TOOL_CHAIN_PREFIX}-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_ram.lds,--strip-debug -ffreestanding -nostdlib -o picoram_fw.elf start.s picoram_fw.c
 
 picorom_fw.elf: sections_rom.lds start.s picorom_fw.c
-	riscv32-unknown-elf-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_rom.lds,--strip-debug -ffreestanding -nostdlib -o picorom_fw.elf start.s picorom_fw.c
+	${TOOL_CHAIN_PREFIX}-gcc -DHX8KDEMO -march=rv32imc -Wl,-Bstatic,-T,sections_rom.lds,--strip-debug -ffreestanding -nostdlib -o picorom_fw.elf start.s picorom_fw.c
 
 picoram_fw.hex: picoram_fw.elf
-	riscv32-unknown-elf-objcopy -O verilog picoram_fw.elf picoram_fw.hex
-	riscv32-unknown-elf-objdump -h -D -t picoram_fw.elf > picoram_fw.map
+	${TOOL_CHAIN_PREFIX}-objcopy -O verilog picoram_fw.elf picoram_fw.hex
+	${TOOL_CHAIN_PREFIX}-objdump -h -D -t picoram_fw.elf > picoram_fw.map
 
 picorom_fw.hex: picorom_fw.elf
-	riscv32-unknown-elf-objcopy -O verilog picorom_fw.elf picorom_fw.hex
+	${TOOL_CHAIN_PREFIX}-objcopy -O verilog picorom_fw.elf picorom_fw.hex
 	riscv32-unknown-elf-objdump -h -D -t picorom_fw.elf > picorom_fw.map
 
 picoram_fw.bin: picoram_fw.elf
-	riscv32-unknown-elf-objcopy -O binary picoram_fw.elf picoram_fw.bin
+	${TOOL_CHAIN_PREFIX}-objcopy -O binary picoram_fw.elf picoram_fw.bin
 
 picorom_fw.bin: picorom_fw.elf
-	riscv32-unknown-elf-objcopy -O binary picorom_fw.elf picorom_fw.bin
+	${TOOL_CHAIN_PREFIX}-objcopy -O binary picorom_fw.elf picorom_fw.bin
 
 ram_fw.hex: picoram_fw.hex
 	python ../scripts/romload/hex8tohex32.py picoram_fw.hex > rom_fw.hex
